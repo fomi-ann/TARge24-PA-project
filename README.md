@@ -5,3 +5,6 @@
 - Anna Fomina
 - Kati Koppel
 - Kevin Randla
+
+# Idee
+Menüü kalkulaator
