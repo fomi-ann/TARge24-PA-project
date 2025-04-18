@@ -12,7 +12,7 @@ class RegisteredClient(Client):
         super().__init__('EE' + bank_account, first_name, last_name, middle_name)
 
     def set_client_id(self):
-        """Sets the current client's id."""
+        """Sets the current client's id by checking main programs inputs."""
         pass
 
     def get_client_id(self):
