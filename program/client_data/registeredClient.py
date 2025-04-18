@@ -1,21 +1,18 @@
 from Client import Client
-
+import client_data
 
 class RegisteredClient(Client):
     """RegisteredClient is a subclass of Client."""
 
-    def __init__(self, bank_account: str, first_name: str, last_name: str, middle_name: str = "", client_id:str = None):
+    def __init__(self, bank_account: str, first_name: str, last_name: str, middle_name: str = ""):
         """Registered client constructor"""
-        self.client_id = client_id
+        self.client_id = self.set_client_id()
         self.completed_orders = []  # list of file names that contain completed orders
         self.pending_orders = []  # list of file names that contain pending orders
         super().__init__('EE' + bank_account, first_name, last_name, middle_name)
 
-    def create_client_id(self) -> str:
-        """
-        Creates a random string of numbers 8 characters in length
-        and assigns it to the self.client_id class variable.
-        """
+    def set_client_id(self):
+        """Sets the current client's id."""
         pass
 
     def get_client_id(self):

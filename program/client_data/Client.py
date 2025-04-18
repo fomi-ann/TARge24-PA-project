@@ -24,21 +24,6 @@ class Client(ABC):
         """
         pass
 
-    def get_client_id(self):
-        """Get client id method which registeredClient subclass overrides."""
-        pass
-
-    def get_all_orders(self):
-        """Get all orders method which registeredClient subclass overrides."""
-        pass
-    def get_completed_orders(self):
-        """Get completed orders method which registeredClient subclass overrides."""
-        pass
-
-    def get_pending_orders(self):
-        """Get pending orders method which registeredClient subclass overrides."""
-        pass
-
 
 if __name__ == '__main__':
     pass
