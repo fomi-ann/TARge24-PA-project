@@ -108,6 +108,8 @@ def user_operation_check() -> None:
                 return
             elif user_input == correct_inputs[2:3]:
                 # Client login
+                # NEED TO SEND CLIENT ID TO CLIENT INIT
+                # CREATE METHOD FOR GETTING CLIENT ID
                 client_db_mgmt.init_client()
                 return
             else:
