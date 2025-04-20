@@ -100,6 +100,7 @@ def user_operation_check() -> None:
     while True:
         user_input = input("Do you want to register,login or continue as a guest?(r/l/c):").lower()
         if user_input_control(user_input, correct_inputs):
+            ### RETURN VALUES HAVE TO BE CLIENT CLASS ###
             if user_input == correct_inputs[0:1]:
                 # Client registration
                 new_id = client_db_mgmt.create_client_id()
