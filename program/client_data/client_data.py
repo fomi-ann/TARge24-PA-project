@@ -47,7 +47,7 @@ def create_name():
     3. If the amount of inputted names are 2, the string is split and an empty string
         is put inside the 2nd index to account for no middle name input
     4. If the name amount is 3, the string is split and sent back
-    5. If the name amount is more than 3, the string middle name is sent to join middle name method.
+    5. If the name amount is more than 3, the string middle name is sent to join_middle_names method.
     """
     name = input("Please insert your name: ")
     while True:
