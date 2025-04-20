@@ -1,27 +1,7 @@
-from Client import Client
-
-def save_client(client:Client):
-    """Saves client information to registeredClients.csv"""
-    pass
-
-def init_client(user_id):
-    """Creates a registered client subclass for the current session."""
-    pass
-
-def create_client_id() -> str:
-    """
-    Creates a random string 8 characters long.
-    1. Creates 8 random single digit numbers
-    2. Adds them together as a string
-    3. Checks if string is in registeredClients.csv
-    4. If string is in file, runs the function again
-    5. Returns the string if it is not in file
-    """
-    pass
-
 def check_numbers_in_name(name):
     """Checks if there are numbers in name."""
     return any(char.isdigit() for char in name)
+
 
 def join_middle_names(name) -> list:
     """Joins multiple middle names.
@@ -38,6 +18,7 @@ def join_middle_names(name) -> list:
         name_list[1] += n + "-"
     name_list[1] = name_list[1][:-1]
     return name_list
+
 
 def create_name():
     """Separates a user inputted name
@@ -69,6 +50,7 @@ def create_name():
 
     return name[0], name[1], name[2]
 
+
 def check_bank_acc_for_letters(bank_acc):
     """Checks if the user inputted bank account has letters."""
     for digit in bank_acc:
@@ -77,6 +59,7 @@ def check_bank_acc_for_letters(bank_acc):
         except ValueError:
             return True
     return False
+
 
 def get_user_bank_account():
     """Asks the user for a valid bank account and returns it."""
@@ -88,4 +71,3 @@ def get_user_bank_account():
             bank_acc = input("Your bank account must contain 16 numbers. Please insert your bank account again:")
         else:
             return bank_acc
-
