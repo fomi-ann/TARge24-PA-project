@@ -102,7 +102,8 @@ def user_operation_check() -> None:
         if user_input_control(user_input, correct_inputs):
             if user_input == correct_inputs[0:1]:
                 # Client registration
-                client_db_mgmt.register_client(get_user_data())
+                new_id = client_db_mgmt.create_client_id()
+                client_db_mgmt.init_client(get_user_data(), new_id)
                 return
             elif user_input == correct_inputs[2:3]:
                 # Client login

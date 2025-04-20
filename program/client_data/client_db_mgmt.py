@@ -26,19 +26,9 @@ def init_client(user_data: list = None, user_id=None):
         # Registered user initiation from database
         pass
     else:
-        # New registered user initiation
+        # 1. New registered user initiation
+        # 2. save to database.
         pass
-
-
-def register_client(client_info: list):
-    """
-    1. Creates a new id for client.
-    2. Initiates client with init_client method.
-    3. Saves client into database with save_client_to_db method.
-    :param client_info:
-    :return:
-    """
-    pass
 
 
 def create_client_id() -> str:
