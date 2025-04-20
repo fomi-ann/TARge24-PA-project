@@ -41,7 +41,9 @@ def create_name():
         if not check_numbers_in_name(name) and name_length_check > 1:
             if name_length_check == 2:
                 name = name.split()
-                name.insert(0, "")
+                print(name)
+                name.insert(1, "")
+                print(name)
             elif name_length_check == 3:
                 name = name.split()
             else:

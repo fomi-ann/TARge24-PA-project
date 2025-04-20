@@ -1,26 +1,40 @@
 from Client import Client
+from program.client_data.guestClient import GuestClient
 
 
 def read_db():
     """Reads the existing database into a variable and returns it."""
     pass
 
-def save_client_to_db(client:Client):
+
+def save_client_to_db(client: Client):
     """Saves client information to database"""
     pass
+
 
 def remove_client_from_db(client_id):
     """Removes the registered client from the database."""
     pass
 
-def init_client(user_data:list = None,user_id = None):
+
+def init_client(user_data: list = None, user_id=None):
     """Creates a client subclass for the current program session."""
-    pass
+    if user_id is None and user_data is not None:
+        # Guest client initiation
+        guest_client = GuestClient(*user_data)
+    elif user_id is not None and user_data is None:
+        # Registered user initiation from database
+        pass
+    else:
+        # New registered user initiation
+        pass
+
 
 def register_client(client_info: list):
     """
-    1. Initiates client with init_client method.
-    2. Saves client into database with save_client_to_db method.
+    1. Creates a new id for client.
+    2. Initiates client with init_client method.
+    3. Saves client into database with save_client_to_db method.
     :param client_info:
     :return:
     """
