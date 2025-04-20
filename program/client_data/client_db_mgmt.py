@@ -18,7 +18,11 @@ def remove_client_from_db(client_id):
 
 
 def init_client(user_data: list = None, user_id=None):
-    """Creates a client subclass for the current program session."""
+    """Creates a client subclass for the current program session and returns it.
+    1. If the method recieves only a list of values, it initiates a guest client class.
+    2. If it recieves only the user_id then it initialises the user from the database.
+    3. If it recieves both, it initialises a new registered user for the session.
+    """
     ### HAS TO RETURN THE CLIENT CLASS VALUES ###
     if user_id is None and user_data is not None:
         # Guest client initiation
@@ -28,7 +32,8 @@ def init_client(user_data: list = None, user_id=None):
         pass
     else:
         # 1. New registered user initiation
-        # 2. save to database.
+        # 2. save to database
+        # 3. print user_id for user
         pass
 
 
