@@ -23,7 +23,3 @@ class Client(ABC):
         Get full name method which every subclass overrides.
         """
         pass
-
-
-if __name__ == '__main__':
-    pass

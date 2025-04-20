@@ -6,7 +6,7 @@ class RegisteredClient(Client):
 
     def __init__(self, bank_account: str, first_name: str, last_name: str, middle_name: str = ""):
         """Registered client constructor"""
-        self.client_id = self.set_client_id()
+        self.client_id = None
         self.completed_orders = []  # list of file names that contain completed orders
         self.pending_orders = []  # list of file names that contain pending orders
         super().__init__('EE' + bank_account, first_name, last_name, middle_name)

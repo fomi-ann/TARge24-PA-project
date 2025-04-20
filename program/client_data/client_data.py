@@ -64,3 +64,24 @@ def create_name():
             name = input("Please enter a valid name: ")
 
     return name[0], name[1], name[2]
+
+def check_bank_acc_for_letters(bank_acc):
+    """Checks if the user inputted bank account has letters."""
+    for digit in bank_acc:
+        try:
+            int(digit)
+        except ValueError:
+            return True
+    return False
+
+def get_user_bank_account():
+    """Asks the user for a valid bank account and returns it."""
+    bank_acc = input("Please insert your bank account numbers:")
+    while True:
+        if check_bank_acc_for_letters(bank_acc):
+            bank_acc = input("Your bank account cannot contain letters or spaces. Please try again: ")
+        elif not len(bank_acc) == 16:
+            bank_acc = input("Your bank account must contain 16 numbers. Please insert your bank account again:")
+        else:
+            return bank_acc
+
