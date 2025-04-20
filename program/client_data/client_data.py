@@ -4,6 +4,10 @@ def save_client(client:Client):
     """Saves client information to registeredClients.csv"""
     pass
 
+def init_client(user_id):
+    """Creates a registered client subclass for the current session."""
+    pass
+
 def create_client_id() -> str:
     """
     Creates a random string 8 characters long.
