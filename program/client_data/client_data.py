@@ -1,3 +1,6 @@
+import client_db_mgmt
+
+
 def check_numbers_in_name(name):
     """Checks if there are numbers in name."""
     return any(char.isdigit() for char in name)
@@ -61,7 +64,7 @@ def check_bank_acc_for_letters(bank_acc):
     return False
 
 
-def get_user_bank_account():
+def get_user_bank_acc():
     """Asks the user for a valid bank account and returns it."""
     bank_acc = input("Please insert your bank account numbers:")
     while True:
@@ -71,3 +74,41 @@ def get_user_bank_account():
             bank_acc = input("Your bank account must contain 16 numbers. Please insert your bank account again:")
         else:
             return bank_acc
+
+
+def get_user_data():
+    """
+    Asks the user their bank account and name.
+    Returns a list with the following order [bank_account, first_name, middle_name, last_name]
+    """
+    first_name, middle_name, last_name = create_name()
+    bank_acc = get_user_bank_acc()
+    return [bank_acc, first_name, middle_name, last_name]
+
+
+def user_input_control(user_input: str, correct_inputs: list) -> bool:
+    """Checks if the user made a correct input from preset options."""
+    if user_input in correct_inputs:
+        return True
+    return False
+
+def user_operation_check() -> None:
+    """Checks if the user wants to log in, register or continue as a guest."""
+    correct_inputs = ["r", "register", "l", "login", "continue", "c"]
+    while True:
+        user_input = input("Do you want to register,login or continue as a guest?(r/l/c):").lower()
+        if user_input_control(user_input, correct_inputs):
+            if user_input == correct_inputs[0:1]:
+                # Client registration
+                client_db_mgmt.register_client(get_user_data())
+                return
+            elif user_input == correct_inputs[2:3]:
+                # Client login
+                client_db_mgmt.init_client()
+                return
+            else:
+                # Guest session
+                client_db_mgmt.init_client(get_user_data())
+                return
+        else:
+            print("You have inserted an invalid operation. Please select a valid one.")

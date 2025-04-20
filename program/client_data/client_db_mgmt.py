@@ -13,9 +13,19 @@ def remove_client_from_db(client_id):
     """Removes the registered client from the database."""
     pass
 
-def init_client(user_id):
-    """Creates a registered client subclass for the current program session."""
+def init_client(user_data:list = None,user_id = None):
+    """Creates a client subclass for the current program session."""
     pass
+
+def register_client(client_info: list):
+    """
+    1. Initiates client with init_client method.
+    2. Saves client into database with save_client_to_db method.
+    :param client_info:
+    :return:
+    """
+    pass
+
 
 def create_client_id() -> str:
     """
