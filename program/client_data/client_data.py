@@ -94,6 +94,22 @@ def user_input_control(user_input: str, correct_inputs: list) -> bool:
         return True
     return False
 
+
+def ask_user_id():
+    """Asks user for their id. Will keep asking for a valid ID if the given ID isn't in the database."""
+
+    while True:
+        id = input("Please insert your id: ")
+        db = client_db_mgmt.client_db
+        db_check = any(id in x for x in db)
+        if db_check:
+            return id
+        elif len(id) != 8:
+            print("Your id needs to be 8 characters long.")
+        elif not db_check:
+            print("You have entered an invalid id or you're not registered.")
+
+
 def user_operation_check() -> None:
     """Checks if the user wants to log in, register or continue as a guest."""
     correct_inputs = ["r", "register", "l", "login", "continue", "c"]
@@ -110,6 +126,7 @@ def user_operation_check() -> None:
                 # Client login
                 # NEED TO SEND CLIENT ID TO CLIENT INIT
                 # CREATE METHOD FOR GETTING CLIENT ID
+                id = ask_user_id()
                 client_db_mgmt.init_client()
                 return
             else:
