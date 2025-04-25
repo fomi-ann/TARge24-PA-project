@@ -3,8 +3,10 @@ import csv
 
 from Client import Client
 from program.client_data.guestClient import GuestClient
+from program.client_data.registeredClient import RegisteredClient
 
 client_db = None
+
 
 def database_init_check():
     """Checks if the client_db is a None type and exits the program if it is.
@@ -13,6 +15,7 @@ def database_init_check():
     if client_db is None:
         print("Database failed to initialise. Ending program.")
         exit()
+
 
 def read_db():
     """
@@ -26,9 +29,11 @@ def read_db():
         # return client_db
 
 
-def save_client_to_db(client: Client):
+def save_client_to_db(client: RegisteredClient):
     """Saves client information to database"""
-    pass
+    with open("registeredClientsTest.csv", "a", newline="") as db:
+        csv_file = csv.writer(db, delimiter=":")
+        csv_file.writerow(client.get_client_data())
 
 
 def remove_client_from_db(client_id):
