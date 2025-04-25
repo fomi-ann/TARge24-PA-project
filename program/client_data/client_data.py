@@ -126,8 +126,7 @@ def user_operation_check() -> None:
                 # Client login
                 # NEED TO SEND CLIENT ID TO CLIENT INIT
                 # CREATE METHOD FOR GETTING CLIENT ID
-                id = ask_user_id()
-                client_db_mgmt.init_client()
+                client_db_mgmt.init_client(user_id= ask_user_id())
                 return
             else:
                 # Guest session

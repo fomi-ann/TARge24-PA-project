@@ -1,6 +1,7 @@
 from Client import Client
 import client_data
 
+
 class RegisteredClient(Client):
     """RegisteredClient is a subclass of Client."""
 
@@ -18,6 +19,11 @@ class RegisteredClient(Client):
     def set_client_id(self, user_id):
         """Sets the current client's id by checking main programs inputs."""
         self.id = user_id
+
+    def init_orders(self, comp_orders:list, pen_orders:list):
+        """Initialises orders from database data."""
+        self.completed_orders = comp_orders
+        self.pending_orders = pen_orders
 
     def get_client_id(self):
         """Returns client id."""
@@ -58,3 +64,6 @@ class RegisteredClient(Client):
     def get_pending_orders(self) -> list:
         """Returns a list of pending orders."""
         return self.pending_orders
+
+    def __repr__(self):
+        return f"ID:{self.id} BankAccount: {self.bank_account} Name:{self.get_full_name()} Completed orders = {self.completed_orders} Pending orders={self.pending_orders}"

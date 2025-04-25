@@ -1,5 +1,6 @@
 import random
 import csv
+import json
 
 from Client import Client
 from program.client_data.guestClient import GuestClient
@@ -23,10 +24,12 @@ def read_db():
     Returns nothing.
     Should be used at the start of a program.
     """
+    global client_db
     with open("registeredClients.csv", "r") as db:
-        global client_db
         client_db = list(csv.reader(db, delimiter=":"))
         # return client_db
+    # with open("registeredClientsTest.csv", "r") as db:
+    #     client_db = list(csv.reader(db, delimiter=":"))
 
 
 def save_client_to_db(client: RegisteredClient):
@@ -34,6 +37,16 @@ def save_client_to_db(client: RegisteredClient):
     with open("registeredClients.csv", "a", newline="") as db:
         csv_file = csv.writer(db, delimiter=":")
         csv_file.writerow(client.get_client_data())
+
+
+def load_user_data_from_db(user_id):
+    """Returns a list of all the saved user data."""
+    global client_db
+    database_init_check()
+
+    for client_data in client_db:
+        if user_id in client_data:
+            return client_data
 
 
 def remove_client_from_db(client_id):
@@ -53,7 +66,35 @@ def init_client(user_data: list = None, user_id=None):
         client = GuestClient(*user_data)
     elif user_id is not None and user_data is None:
         # Registered user initiation from database
-        pass
+        read_db()
+        client_data = load_user_data_from_db(user_id)
+        # Converts strings in client data to lists.
+        for x in range(len(client_data)):
+            try:
+                client_data[x] = json.loads(client_data[x])
+            except TypeError:
+                pass
+            except json.decoder.JSONDecodeError:
+                pass
+
+        # Checks if the user has a middle name
+        split_name = client_data[1].split()
+        print(split_name)
+        if len(split_name) > 2:
+            first_name = split_name[0]
+            middle_name = split_name[1]
+            last_name = split_name[2]
+        else:
+            first_name = split_name[0]
+            middle_name = ""
+            last_name = split_name[1]
+
+        client = RegisteredClient(str(client_data[2]), first_name, last_name, middle_name)
+
+        client.set_client_id(user_id)
+        client.init_orders(client_data[3], client_data[4])
+
+        print(client)
     else:
         # 1. New registered user initiation
         # 2. save to database
@@ -62,6 +103,7 @@ def init_client(user_data: list = None, user_id=None):
         client.set_client_id(user_id)
         print(f"Your new id is: {client.get_client_id()}")
         save_client_to_db(client)
+
 
 def create_client_id() -> str:
     """

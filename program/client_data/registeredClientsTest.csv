@@ -1,3 +1,5 @@
 client_id:full_name:bank_account:completed_orders:pending_orders
-newId:Kevin Randla:EE739201856473928501:[]:[]
-67752728:Kevin Randla :EE8290174536289105:[]:[]
+newId:Kevin Randla:739201856473928501:["completed"]:["pending"]
+67752728:Kevin Randla :8290174536289105:["completed"]:["pending"]
+
+67752723:Kevin Randla :8290174536289105:["completed"]:["pending"]
