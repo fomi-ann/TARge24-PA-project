@@ -15,6 +15,8 @@ class GuestClient(Client):
 
     def get_full_name(self) -> str:
         """Returns the clients full name as a string."""
+        if self.middle_name == "":
+            return self.first_name + " " + self.last_name
         return self.first_name + " " + self.middle_name + " " + self.last_name
 
     def get_bank_account(self):

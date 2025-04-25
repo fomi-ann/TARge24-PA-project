@@ -18,7 +18,13 @@ class Client(ABC):
         pass
 
     @abstractmethod
-    def get_full_name(self) -> list:
+    def get_full_name_list(self) -> list:
+        """
+        Get full name list method which every subclass overrides.
+        """
+        pass
+    @abstractmethod
+    def get_full_name(self) -> str:
         """
         Get full name method which every subclass overrides.
         """

@@ -23,11 +23,17 @@ class RegisteredClient(Client):
         """Returns client id."""
         return self.id
 
-    def get_full_name(self) -> list:
+    def get_full_name_list(self) -> list:
         """
         Returns an ordered list containing the users first, middle and last name.
         """
         return [self.first_name, self.middle_name, self.last_name]
+
+    def get_full_name(self) -> str:
+        """Returns the clients full name as a string."""
+        if self.middle_name == "":
+            return self.first_name + " " + self.last_name
+        return self.first_name + " " + self.middle_name + " " + self.last_name
 
     def get_bank_account(self):
         """Returns the bank stored bank account."""
