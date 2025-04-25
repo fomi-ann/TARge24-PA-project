@@ -15,9 +15,9 @@ class RegisteredClient(Client):
         """Creates a list of values corresponding to the database format."""
         return [self.id, self.get_full_name(), self.bank_account, str(self.completed_orders), str(self.pending_orders)]
 
-    def set_client_id(self):
+    def set_client_id(self, user_id):
         """Sets the current client's id by checking main programs inputs."""
-        pass
+        self.id = user_id
 
     def get_client_id(self):
         """Returns client id."""

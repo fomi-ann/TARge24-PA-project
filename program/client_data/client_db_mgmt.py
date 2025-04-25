@@ -31,7 +31,7 @@ def read_db():
 
 def save_client_to_db(client: RegisteredClient):
     """Saves client information to database"""
-    with open("registeredClientsTest.csv", "a", newline="") as db:
+    with open("registeredClients.csv", "a", newline="") as db:
         csv_file = csv.writer(db, delimiter=":")
         csv_file.writerow(client.get_client_data())
 
@@ -50,7 +50,7 @@ def init_client(user_data: list = None, user_id=None):
     ### HAS TO RETURN THE CLIENT CLASS VALUES ###
     if user_id is None and user_data is not None:
         # Guest client initiation
-        guest_client = GuestClient(*user_data)
+        client = GuestClient(*user_data)
     elif user_id is not None and user_data is None:
         # Registered user initiation from database
         pass
@@ -58,8 +58,10 @@ def init_client(user_data: list = None, user_id=None):
         # 1. New registered user initiation
         # 2. save to database
         # 3. print user_id for user
-        pass
-
+        client = RegisteredClient(*user_data)
+        client.set_client_id(user_id)
+        print(f"Your new id is: {client.get_client_id()}")
+        save_client_to_db(client)
 
 def create_client_id() -> str:
     """
