@@ -1,6 +1,7 @@
 import random
 import csv
 import json
+import pandas as pd
 
 from Client import Client
 from program.client_data.guestClient import GuestClient
@@ -51,7 +52,12 @@ def load_user_data_from_db(user_id):
 
 def remove_client_from_db(client_id):
     """Removes the registered client from the database."""
-    pass
+    df = pd.read_csv('registeredClients.csv', delimiter=":")
+    for n in range(len(df)):
+        if df.iloc[n]['client_id'] == client_id:
+            df.drop(df.index[n], inplace=True)
+            df.to_csv('registeredClients.csv', index= False, sep=":")
+            break
 
 
 def init_client(user_data: list = None, user_id=None):
@@ -64,6 +70,7 @@ def init_client(user_data: list = None, user_id=None):
     if user_id is None and user_data is not None:
         # Guest client initiation
         client = GuestClient(*user_data)
+        return
     elif user_id is not None and user_data is None:
         # Registered user initiation from database
         read_db()
@@ -94,7 +101,7 @@ def init_client(user_data: list = None, user_id=None):
         client.set_client_id(user_id)
         client.init_orders(client_data[3], client_data[4])
 
-        print(client)
+        return
     else:
         # 1. New registered user initiation
         # 2. save to database
@@ -103,6 +110,7 @@ def init_client(user_data: list = None, user_id=None):
         client.set_client_id(user_id)
         print(f"Your new id is: {client.get_client_id()}")
         save_client_to_db(client)
+        return
 
 
 def create_client_id() -> str:
