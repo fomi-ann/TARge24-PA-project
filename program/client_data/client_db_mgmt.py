@@ -1,4 +1,5 @@
 import random
+import csv
 
 from Client import Client
 from program.client_data.guestClient import GuestClient
@@ -12,7 +13,10 @@ def read_db():
     Returns nothing.
     Should be used at the start of a program.
     """
-    pass
+    with open("registeredClients.csv", "r") as db:
+        global client_db
+        client_db = list(csv.reader(db, delimiter=":"))
+        # return client_db
 
 
 def save_client_to_db(client: Client):
