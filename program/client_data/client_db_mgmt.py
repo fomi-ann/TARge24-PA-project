@@ -1,9 +1,17 @@
+import random
+
 from Client import Client
 from program.client_data.guestClient import GuestClient
 
+client_db = None
+
 
 def read_db():
-    """Reads the existing database into a variable and returns it."""
+    """
+    Reads the existing database into a variable.
+    Returns nothing.
+    Should be used at the start of a program.
+    """
     pass
 
 
@@ -42,8 +50,16 @@ def create_client_id() -> str:
     Creates a random string 8 characters long.
     1. Creates 8 random single digit numbers
     2. Adds them together as a string
-    3. Checks if string is in registeredClients.csv
+    3. Checks if string is in registeredClients.csv(database is loaded at the start of the program)
     4. If string is in file, runs the function again
     5. Returns the string if it is not in file
     """
-    pass
+    new_id = ""
+    for x in range(0, 8):
+        new_id += str(random.randint(0, 9))
+
+    if new_id in client_db:
+        new_id = create_client_id()
+        return new_id
+    else:
+        return new_id
