@@ -6,10 +6,14 @@ class RegisteredClient(Client):
 
     def __init__(self, bank_account: str, first_name: str, last_name: str, middle_name: str = ""):
         """Registered client constructor"""
-        self.client_id = None
+        self.id = None
         self.completed_orders = []  # list of file names that contain completed orders
         self.pending_orders = []  # list of file names that contain pending orders
-        super().__init__('EE' + bank_account, first_name, last_name, middle_name)
+        super().__init__(bank_account, first_name, last_name, middle_name)
+
+    def get_client_data(self):
+        """Creates a list of values corresponding to the database format."""
+        return [self.id, self.get_full_name(), self.bank_account, str(self.completed_orders), str(self.pending_orders)]
 
     def set_client_id(self):
         """Sets the current client's id by checking main programs inputs."""
@@ -17,7 +21,7 @@ class RegisteredClient(Client):
 
     def get_client_id(self):
         """Returns client id."""
-        return self.client_id
+        return self.id
 
     def get_full_name(self) -> list:
         """
