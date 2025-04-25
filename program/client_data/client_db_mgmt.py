@@ -6,6 +6,13 @@ from program.client_data.guestClient import GuestClient
 
 client_db = None
 
+def database_init_check():
+    """Checks if the client_db is a None type and exits the program if it is.
+    """
+    global client_db
+    if client_db is None:
+        print("Database failed to initialise. Ending program.")
+        exit()
 
 def read_db():
     """
@@ -58,11 +65,15 @@ def create_client_id() -> str:
     4. If string is in file, runs the function again
     5. Returns the string if it is not in file
     """
+    global client_db
+
     new_id = ""
     for x in range(0, 8):
         new_id += str(random.randint(0, 9))
 
-    if new_id in client_db:
+    database_init_check()
+
+    if any(new_id in db for db in client_db):
         new_id = create_client_id()
         return new_id
     else:
