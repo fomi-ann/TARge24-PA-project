@@ -1,3 +1,5 @@
+import uuid
+
 class PizzaBase:
     """
     General pizza base class.
@@ -73,6 +75,9 @@ class Topping:
     def _set_price(self):
         self.price = round(0.1 * self.weight, 2)
 
+    def __repr__(self):
+        return self.name
+
 class Pizza:
     """General pizza class."""
     def __init__(self, name, dough: PizzaBase):
@@ -81,12 +86,26 @@ class Pizza:
         self.toppings = []
         self.price = 0
         self.calories = 0
+        self.id = str(uuid.uuid4())
+
+    def __eq__(self, other):
+        return isinstance(other, Pizza) and self.id == other.id
 
     def add_topping(self, topping):
         if topping not in self.toppings:
             self.toppings.append(topping)
             self._set_price()
             self.calculate_calories()
+
+    def remove_topping(self, topping_name):
+        """Remove a topping by it's name."""
+        for topping in self.toppings:
+            if topping.name == topping_name:
+                self.toppings.remove(topping)
+                self._set_price()
+                self.calculate_calories()
+                break
+
 
     def _set_price(self):
         """
@@ -183,7 +202,7 @@ class VeggieSupreme(Pizza):
         self.calculate_calories()
 
 if __name__ == '__main__':
-    fourcheese = FourCheese(ThinCrust(25))
+    fourcheese = FourCheese(ThickCrust(30))
     print(f"{fourcheese.name}: {fourcheese.price}€, {fourcheese.calories} kcal")
 
     custom = Pizza("Custom pizza", ThinCrust(25))
@@ -193,3 +212,15 @@ if __name__ == '__main__':
     custom.add_topping(Topping("Goat cheese", 40))
     custom.add_topping(Topping("Parmesan", 25))
     print(f"{custom.name}: {custom.price}€, {custom.calories} kcal")
+
+    pizza1 = FourCheese(ThinCrust(25))
+    print(pizza1.name, pizza1.toppings)
+    pizza1.remove_topping("Blue cheese")
+    print(pizza1.name, pizza1.toppings)
+
+    Pizza123 = Margherita(ThinCrust(25))
+    Pizza456 = Margherita(ThinCrust(25))
+    print(Pizza123.id)
+    print(Pizza456.id)
+    print(Pizza123 == Pizza456)
+
