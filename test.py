@@ -23,6 +23,7 @@ if __name__ == '__main__':
     #
     pizza123 = Margherita(ThinCrust(25))
     pizza456 = Pepperoni(ThinCrust(30))
+    pizza666 = BBQChicken(ThinCrust(25))
     # print(pizza123.name)
     # print(pizza456.id)
     # print(pizza123 == pizza456)
@@ -49,6 +50,7 @@ if __name__ == '__main__':
     #
     order1.add_item(pizza123)
     order1.add_item(pizza456)
+    order1.add_item(pizza666)
     print(order1.ordered_items)
 
     order1.remove_item(pizza123)

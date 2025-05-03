@@ -1,71 +1,67 @@
+from __future__ import annotations
 
 from Pizza import *
-from Order import Order
+from Client import Client
+import uuid
 
 
-class Restaurant:
-    def __init__(self, name):
-        """Initialize Restaurant with given name."""
-        self.name = name
-        self.orders = []
-        self.menu_items = []
-        self.menu_pizza_25 = []
-        self.menu_pizza_30 = []
+
+class Order:
+    def __init__(self, restaurant: Restaurant, client: Client):
+        """Initialize the order details"""
+        self.restaurant = restaurant
+        self.client = client
+        self.client_name = client.first_name + " " + client.last_name
+        self.id = str(uuid.uuid4())
+        self.total_price = 0
+        self.total_calories = 0
+        """Random generated ID"""
+        self.ordered_items = []
 
     def __repr__(self):
-        return f'Restaurant {self.name}, Todays pizza choices for 25 / 30 cm; thin / thick crust: {self.get_menu_item_name()}'
+        return f"Order nr: {self.id}, client: {self.client}, total_price: {self.total_price}, total_calories: {self.total_calories}"
 
-    def add_menu_item(self, pizza: Pizza):
-        """Add a menu item to the restaurant's menu"""
-
-        self.menu_pizza_25.append(pizza)
-        self.menu_pizza_30.append(pizza)
-
-
-
-
-    def get_menu_item_name(self):
-        """Return menu item name."""
-        pizza_25 = '25 cm Pizzas: '
-        pizza_30 = '30 cm Pizzas: '
-        for pizza in self.menu_pizza_25:
-            pizza_25 += f'{pizza.name} '
-        for pizza in self.menu_pizza_30:
-            pizza_30 += f'{pizza.name}'
-        return pizza_25 + ' ' + pizza_30
-
-
-    def load_default_menu(self):
-        """Add all pizza types (classes) to the menu"""
-        self.menu_pizza_25.append(Margherita(ThinCrust(25)))
-        self.menu_pizza_25.append(Pepperoni(ThinCrust(25)))
-        self.menu_pizza_25.append(BBQChicken(ThinCrust(25)))
-        self.menu_pizza_25.append(FourCheese(ThinCrust(25)))
-        self.menu_pizza_25.append(VeggieSupreme(ThinCrust(25)))
-
-        self.menu_pizza_30.append(Margherita(ThinCrust(30)))
-        self.menu_pizza_30.append(Pepperoni(ThinCrust(30)))
-        self.menu_pizza_30.append(BBQChicken(ThinCrust(30)))
-        self.menu_pizza_30.append(FourCheese(ThinCrust(30)))
-        self.menu_pizza_30.append(VeggieSupreme(ThinCrust(30)))
-
-
-    def place_order(self, order: Order):
-        """Add the order to the restaurant's order list"""
-        self.orders.append(order)
-
-    def cancel_order(self, order: Order):
-        """Cancel the order from the restaurant's list of orders"""
-        if order in self.orders:
-            self.orders.remove(order)
-            print(f"Order {order.id} has been removed from the orders list.")
+    def add_item(self, pizza: Pizza):
+        """Add a pizza item to current order if it's in the restaurant's menu"""
+        pizza_list = self.restaurant.menu_pizza_30
+        pizza_check = any(pizza.name == x.name for x in pizza_list)
+        if pizza_check:
+            self.ordered_items.append(pizza)
+            print(f"{pizza.name} was added to your order.")
         else:
-            print(f"Order {order.id} not found in the orders list.")
+            print(f"{pizza.name} is not in the restaurant's menu. Please choose something else.")
 
-    def confirm_order(self, order):
-        """Confirm an order by adding it to the restaurant's system"""
-        if order.client and order.ordered_items:
-            self.place_order(order)
-            print(f"Order {order.id} confirmed and added to the restaurant's system.")
+    def remove_item(self, pizza):
+        """Remove a specific pizza instance from the order."""
+        if pizza in self.ordered_items:
+            self.ordered_items.remove(pizza)
+            print(f"{pizza.name} was removed from your order.")
         else:
-            print(f"Order {order.id} is invalid and cannot be confirmed.")
+            print(f"{pizza.name} not found in this order.")
+
+
+    def calculate_totals(self):
+        """Calculate the total cost and calories of all items in the order"""
+        self.total_price = sum(pizza.price for pizza in self.ordered_items)
+        self.total_calories = sum(pizza.calories for pizza in self.ordered_items)
+
+    def get_summary(self):
+        """Print the summary of the order"""
+        summary = f"Order ID: {self.id}\n"
+        summary += f"Client: {self.client.first_name if self.client else 'Unknown'}\n"
+        summary += "Ordered items:\n"
+
+        for pizza in self.ordered_items:
+            summary += f" - {pizza.name} ({pizza.dough}cm): {pizza.price} EUR\n"
+
+        summary += f"Total Price: {self.total_price} EUR\n"
+        summary += f"Total Calories: {self.total_calories} kcal"
+        print(summary)
+
+
+
+
+
+
+
+
