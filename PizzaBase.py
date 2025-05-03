@@ -1,21 +1,43 @@
 class PizzaBase:
-    def __init__(self, thickness, size):
-        self.thickness = thickness
+    """
+    General pizza base class.
+
+    Define all ingredients needed to make a pizza base.
+    Measurements are in grams (g).
+    """
+    def __init__(self, size, flour, water, yeast, salt, oil, sugar=0):
         self.size = size
-        self.calories = 0
-        self.price = 0
+        self.flour = flour
+        self.water = water
+        self.yeast = yeast
+        self.salt = salt
+        self.oil = oil
+        self.sugar = sugar
 
     def __repr__(self):
-        return f"You chose a {self.size} size pizza with a {self.thickness} base. Pizza base price is: {self.price}"
+        """Return a string representation of the pizza size."""
+        return f"{self.size} cm pizza"
 
-    def calculate_price(self):
-        if self.size == 25:
-            if self.thickness == "thin":
-                self.price = 5
-            if self.thickness == "thick":
-                self.price = 7
-        if self.size == 30:
-            if self.thickness == "thin":
-                self.price = 7
-            if self.thickness == "thick":
-                self.price = 9
+class ThinCrust(PizzaBase):
+    """
+    Set a thin crust pizza ingredients based on pizza size.
+
+    Measurements are in grams (g).
+    """
+    def __init__(self, size):
+        if size == 25:
+            super().__init__(size, 130, 80, 1.5, 2.5, 12, 1.5)
+        elif size == 30:
+            super().__init__(size, 160, 100, 2, 3, 15, 2)
+
+class ThickCrust(PizzaBase):
+    """
+    Set a thick crust pizza ingredients based on pizza size.
+
+    Measurements are in grams (g).
+    """
+    def __init__(self, size):
+        if size == 25:
+            super().__init__(size, 180, 105, 2.5, 3, 12, 3)
+        elif size == 30:
+            super().__init__(size, 220, 130, 3, 4, 15, 4)

@@ -1,5 +1,7 @@
-from Pizza import Pizza
+
+from Pizza import *
 from Order import Order
+
 
 
 class Restaurant:
@@ -9,9 +11,32 @@ class Restaurant:
         self.orders = []
         self.menu = []
 
+
+    def __repr__(self):
+        return f'Restaurant {self.name}, menu: {self.get_menu_item_name()}'
+
     def add_menu_item(self, pizza: Pizza):
         """Add a menu item to the restaurant's menu"""
         self.menu.append(pizza)
+
+
+    def get_menu_item_name(self):
+        """Return menu item name."""
+        pizza_names = ''
+        print(self.menu)
+        for pizza in self.menu:
+            pizza_names += f'{pizza.name}'
+        return pizza_names
+
+
+    def load_default_menu(self):
+        """Add all pizza types (classes) to the menu"""
+        self.add_menu_item(Margherita)
+        self.add_menu_item(Pepperoni)
+        self.add_menu_item(BBQChicken)
+        self.add_menu_item(FourCheese)
+        self.add_menu_item(VeggieSupreme)
+
 
     def place_order(self, order: Order):
         """Add the order to the restaurant's order list"""
