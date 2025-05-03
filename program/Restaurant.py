@@ -1,6 +1,6 @@
 
-from Pizza import *
-from Order import Order
+from program.Pizza import *
+from program.Order import Order
 
 
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from Pizza import *
+from program.Pizza import *
 from Client import Client
 import uuid
 

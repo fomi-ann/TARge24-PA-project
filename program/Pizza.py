@@ -1,6 +1,7 @@
 import uuid
-from Topping import Topping
-import PizzaBase
+from program.Topping import Topping
+from program.PizzaBase import PizzaBase, ThickCrust
+
 
 class Pizza:
     """General pizza class."""
@@ -46,7 +47,7 @@ class Pizza:
         base_price = 14
         if self.dough.size == 30:
             base_price += 2
-        if isinstance(self.dough, PizzaBase.ThickCrust):
+        if isinstance(self.dough, ThickCrust):
             base_price += 1.5
         self.price = round(base_price, 2)
 

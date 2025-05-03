@@ -1,7 +1,8 @@
 from program.Restaurant import *
-from program.Pizza import *
+from program.Pizza import Pizza
 from program.PizzaBase import *
-import Client
+from Client import *
+from program.Topping import *
 
 
 
@@ -11,9 +12,9 @@ if __name__ == '__main__':
     fourcheese = FourCheese(ThickCrust(30))
     print(f"{fourcheese.name}: {fourcheese.price}€, {fourcheese.calories} kcal")
     custom = Pizza("Custom pizza", ThinCrust(25))
-    custom.add_topping(Topping("Fresh mozzarella", 80))
-    custom.add_topping(Topping("Shredded cheese", 60))
-    custom.add_topping(Topping("Blue cheese", 40))
+    custom.add_topping(Topping("fresh mozzarella", 80))
+    custom.add_topping(Topping("shredded cheese", 60))
+    custom.add_topping(Topping("blue cheese", 40))
     custom.add_topping(Topping("Goat cheese", 40))
     custom.add_topping(Topping("Parmesan", 25))
     print(f"{custom.name}: {custom.price}€, {custom.calories} kcal")

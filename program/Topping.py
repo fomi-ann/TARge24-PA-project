@@ -3,8 +3,13 @@ class Topping:
     def __init__(self, name, weight):
         self.name = name
         self.weight = weight
-        self.calories = self.weight * Topping_calories.get(self.name)
         self._set_price()
+
+        key = name.lower()
+
+        if key not in Topping_calories:
+            raise ValueError(f"Unknown topping: {self.name}")
+        self.calories = self.weight * Topping_calories[key]
 
     def _set_price(self):
         self.price = round(0.1 * self.weight, 2)
@@ -32,3 +37,8 @@ Topping_calories = {
     "goat cheese": 2.9,
     "parmesan": 4.3
 }
+
+
+if __name__ == '__main__':
+    topping1 = Topping("fresh mozzarella", 2.8)
+    print(topping1)

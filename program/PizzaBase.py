@@ -42,3 +42,8 @@ class ThickCrust(PizzaBase):
             super().__init__(size, 180, 105, 2.5, 3, 12, 3)
         elif size == 30:
             super().__init__(size, 220, 130, 3, 4, 15, 4)
+
+if __name__ == '__main__':
+    pizza1 = ThinCrust(25)
+    print (pizza1)
+    pizza2 = ThinCrust(30)
