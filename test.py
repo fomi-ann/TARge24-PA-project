@@ -1,4 +1,4 @@
-from Restaurant import *
+from program.Restaurant import *
 from Client import *
 
 
