@@ -1,4 +1,5 @@
-import client_db_mgmt
+import program.client_data.client_db_mgmt
+from program.client_data import client_db_mgmt
 
 
 def check_numbers_in_name(name):

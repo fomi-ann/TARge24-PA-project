@@ -1,4 +1,4 @@
-from Client import Client
+from program.client_data.Client import Client
 
 class GuestClient(Client):
     """GuestClient is a subclass of Client"""

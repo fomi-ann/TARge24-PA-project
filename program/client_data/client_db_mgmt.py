@@ -3,7 +3,7 @@ import csv
 import json
 import pandas as pd
 
-from Client import Client
+from program.client_data.Client import Client
 from program.client_data.guestClient import GuestClient
 from program.client_data.registeredClient import RegisteredClient
 
@@ -11,7 +11,8 @@ client_db = None
 
 
 def database_init_check():
-    """Checks if the client_db is a None type and exits the program if it is.
+    """
+    Checks if the client_db is a None type and exits the program if it is.
     """
     global client_db
     if client_db is None:
@@ -26,7 +27,7 @@ def read_db():
     Should be used at the start of a program.
     """
     global client_db
-    with open("registeredClients.csv", "r") as db:
+    with open("client_data/registeredClients.csv", "r") as db:
         client_db = list(csv.reader(db, delimiter=":"))
         # return client_db
     # with open("registeredClientsTest.csv", "r") as db:
@@ -35,7 +36,7 @@ def read_db():
 
 def save_client_to_db(client: RegisteredClient):
     """Saves client information to database"""
-    with open("registeredClients.csv", "a", newline="") as db:
+    with open("client_data/registeredClients.csv", "a", newline="") as db:
         csv_file = csv.writer(db, delimiter=":")
         csv_file.writerow(client.get_client_data())
 
@@ -52,11 +53,11 @@ def load_user_data_from_db(user_id):
 
 def remove_client_from_db(client_id):
     """Removes the registered client from the database."""
-    df = pd.read_csv('registeredClients.csv', delimiter=":")
+    df = pd.read_csv('client_data/registeredClients.csv', delimiter=":")
     for n in range(len(df)):
         if df.iloc[n]['client_id'] == client_id:
             df.drop(df.index[n], inplace=True)
-            df.to_csv('registeredClients.csv', index= False, sep=":")
+            df.to_csv('client_data/registeredClients.csv', index= False, sep=":")
             break
 
 
