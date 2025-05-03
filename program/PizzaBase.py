@@ -1,3 +1,4 @@
+"""General pizza base class."""
 class PizzaBase:
     """
     General pizza base class.

@@ -1,3 +1,17 @@
+"""General toppings class."""
+class Topping:
+    def __init__(self, name, weight):
+        self.name = name
+        self.weight = weight
+        self.calories = self.weight * Topping_calories.get(self.name)
+        self._set_price()
+
+    def _set_price(self):
+        self.price = round(0.1 * self.weight, 2)
+
+    def __repr__(self):
+        return self.name
+
 """Topping calories dictionary."""
 Topping_calories = {
     "fresh mozzarella": 2.8,
@@ -18,16 +32,3 @@ Topping_calories = {
     "goat cheese": 2.9,
     "parmesan": 4.3
 }
-
-class Topping:
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
-        self.calories = self.weight * Topping_calories.get(self.name)
-        self._set_price()
-
-    def _set_price(self):
-        self.price = round(0.1 * self.weight, 2)
-
-    def __repr__(self):
-        return self.name

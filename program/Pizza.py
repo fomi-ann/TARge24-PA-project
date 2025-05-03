@@ -1,6 +1,6 @@
 import uuid
+from Topping import Topping
 import PizzaBase
-import Topping
 
 class Pizza:
     """General pizza class."""
@@ -15,13 +15,13 @@ class Pizza:
     def __eq__(self, other):
         return isinstance(other, Pizza) and self.id == other.id
 
-    def add_topping(self, topping):
+    def add_topping(self, topping: Topping):
         if topping not in self.toppings:
             self.toppings.append(topping)
             self._set_price()
             self.calculate_calories()
 
-    def remove_topping(self, topping_name):
+    def remove_topping(self, topping_name: Topping):
         """Remove a topping by its name."""
         for topping in self.toppings:
             if topping.name == topping_name:
@@ -29,7 +29,6 @@ class Pizza:
                 self._set_price()
                 self.calculate_calories()
                 break
-
 
     def _set_price(self):
         """
@@ -69,11 +68,11 @@ class Pizza:
 class Margherita(Pizza):
     def __init__(self, dough):
         super().__init__("Margherita", dough)
-        self.add_topping(Topping.Topping("crushed tomatoes", 120))
-        self.add_topping(Topping.Topping("fresh mozzarella", 125))
-        self.add_topping(Topping.Topping("fresh basil", 6))
-        self.add_topping(Topping.Topping("olive oil", 15))
-        self.add_topping(Topping.Topping("salt", 1))
+        self.add_topping(Topping("crushed tomatoes", 120))
+        self.add_topping(Topping("fresh mozzarella", 125))
+        self.add_topping(Topping("fresh basil", 6))
+        self.add_topping(Topping("olive oil", 15))
+        self.add_topping(Topping("salt", 1))
         self.price = 10 if dough.size == 25 else 12
         self.calculate_calories()
 
@@ -84,10 +83,10 @@ class Margherita(Pizza):
 class Pepperoni(Pizza):
     def __init__(self, dough):
         super().__init__("Pepperoni", dough)
-        self.add_topping(Topping.Topping("tomato sauce", 100))
-        self.add_topping(Topping.Topping("shredded cheese", 150))
-        self.add_topping(Topping.Topping("pepperoni slices", 60))
-        self.add_topping(Topping.Topping("salt", 1))
+        self.add_topping(Topping("tomato sauce", 100))
+        self.add_topping(Topping("shredded cheese", 150))
+        self.add_topping(Topping("pepperoni slices", 60))
+        self.add_topping(Topping("salt", 1))
         self.price = 12 if dough.size == 25 else 15
         self.calculate_calories()
 
@@ -99,11 +98,11 @@ class Pepperoni(Pizza):
 class BBQChicken(Pizza):
     def __init__(self, dough):
         super().__init__("BBQ Chicken", dough)
-        self.add_topping(Topping.Topping("BBQ sauce", 100))
-        self.add_topping(Topping.Topping("cooked chicken breast", 120))
-        self.add_topping(Topping.Topping("red onion", 40))
-        self.add_topping(Topping.Topping("shredded cheese", 120))
-        self.add_topping(Topping.Topping("salt", 1))
+        self.add_topping(Topping("BBQ sauce", 100))
+        self.add_topping(Topping("cooked chicken breast", 120))
+        self.add_topping(Topping("red onion", 40))
+        self.add_topping(Topping("shredded cheese", 120))
+        self.add_topping(Topping("salt", 1))
         self.price = 12 if dough.size == 25 else 14
         self.calculate_calories()
 
@@ -115,11 +114,11 @@ class BBQChicken(Pizza):
 class FourCheese(Pizza):
     def __init__(self, dough):
         super().__init__("Four Cheese", dough)
-        self.add_topping(Topping.Topping("fresh mozzarella", 80))
-        self.add_topping(Topping.Topping("shredded cheese", 60))
-        self.add_topping(Topping.Topping("blue cheese", 40))
-        self.add_topping(Topping.Topping("goat cheese", 40))
-        self.add_topping(Topping.Topping("parmesan", 25))
+        self.add_topping(Topping("fresh mozzarella", 80))
+        self.add_topping(Topping("shredded cheese", 60))
+        self.add_topping(Topping("blue cheese", 40))
+        self.add_topping(Topping("goat cheese", 40))
+        self.add_topping(Topping("parmesan", 25))
         self.price = 12 if dough.size == 25 else 14
         self.calculate_calories()
 
@@ -131,14 +130,14 @@ class FourCheese(Pizza):
 class VeggieSupreme(Pizza):
     def __init__(self, dough):
         super().__init__("Veggie Supreme", dough)
-        self.add_topping(Topping.Topping("tomato sauce", 100))
-        self.add_topping(Topping.Topping("shredded cheese", 130))
-        self.add_topping(Topping.Topping("bell pepper", 40))
-        self.add_topping(Topping.Topping("mushrooms", 40))
-        self.add_topping(Topping.Topping("red onion", 30))
-        self.add_topping(Topping.Topping("black olives", 20))
-        self.add_topping(Topping.Topping("olive oil", 15))
-        self.add_topping(Topping.Topping("salt", 1))
+        self.add_topping(Topping("tomato sauce", 100))
+        self.add_topping(Topping("shredded cheese", 130))
+        self.add_topping(Topping("bell pepper", 40))
+        self.add_topping(Topping("mushrooms", 40))
+        self.add_topping(Topping("red onion", 30))
+        self.add_topping(Topping("black olives", 20))
+        self.add_topping(Topping("olive oil", 15))
+        self.add_topping(Topping("salt", 1))
         self.prize = 8 if dough.size == 25 else 10
         self.calculate_calories()
 
@@ -146,29 +145,28 @@ class VeggieSupreme(Pizza):
         toppings_str = ", ".join(t.name for t in self.toppings)
         return f"{self.name} pizza with {toppings_str} toppings"
 
-    if __name__ == '__main__':
-        fourcheese = FourCheese(PizzaBase.ThickCrust(30))
-        print(f"{fourcheese.name}: {fourcheese.price}€, {fourcheese.calories} kcal")
+if __name__ == '__main__':
+    fourcheese = FourCheese(PizzaBase.ThickCrust(30))
+    print(f"{fourcheese.name}: {fourcheese.price}€, {fourcheese.calories} kcal")
 
-        custom = Pizza("Custom pizza", PizzaBase.ThinCrust(25))
-        custom.add_topping(Topping.Topping("fresh mozzarella", 80))
-        custom.add_topping(Topping.Topping("shredded cheese", 60))
-        custom.add_topping(Topping.Topping("blue cheese", 40))
-        custom.add_topping(Topping.Topping("goat cheese", 40))
-        custom.add_topping(Topping.Topping("parmesan", 25))
-        print(f"{custom.name}: {custom.price}€, {custom.calories} kcal")
+    custom = Pizza("Custom pizza", PizzaBase.ThinCrust(25))
+    custom.add_topping(Topping("fresh mozzarella", 80))
+    custom.add_topping(Topping("shredded cheese", 60))
+    custom.add_topping(Topping("blue cheese", 40))
+    custom.add_topping(Topping("goat cheese", 40))
+    custom.add_topping(Topping("parmesan", 25))
+    print(f"{custom.name}: {custom.price}€, {custom.calories} kcal")
 
-        pizza1 = FourCheese(PizzaBase.ThinCrust(25))
-        print(pizza1.name, pizza1.toppings)
-        pizza1.remove_topping("blue cheese")
-        print(pizza1.name, pizza1.toppings)
+    pizza1 = FourCheese(PizzaBase.ThinCrust(25))
+    print(pizza1.name, pizza1.toppings)
+    pizza1.remove_topping("blue cheese")
+    print(pizza1.name, pizza1.toppings)
 
-        Pizza123 = Margherita(PizzaBase.ThinCrust(25))
-        Pizza456 = Margherita(PizzaBase.ThinCrust(25))
-        print(Pizza123.id)
-        print(Pizza456.id)
-        print(Pizza123 == Pizza456)
+    Pizza123 = Margherita(PizzaBase.ThinCrust(25))
+    Pizza456 = Margherita(PizzaBase.ThinCrust(25))
+    print(Pizza123.id)
+    print(Pizza456.id)
+    print(Pizza123 == Pizza456)
 
-        pizza122 = Margherita(PizzaBase.ThinCrust(25))
-        print(pizza122)
-
+    pizza122 = Margherita(PizzaBase.ThinCrust(25))
+    print(pizza122)
