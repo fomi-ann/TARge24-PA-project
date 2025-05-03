@@ -4,9 +4,13 @@ from program.Pizza import *
 from Client import Client
 import uuid
 
+from Restaurant import *
+
+
 class Order:
-    def __init__(self, client: Client):
+    def __init__(self, restaurant: Restaurant, client: Client):
         """Initialize the order details"""
+        self.restaurant = restaurant
         self.client = client
         self.client_name = client.first_name + " " + client.last_name
         self.id = str(uuid.uuid4())
@@ -20,7 +24,9 @@ class Order:
 
     def add_item(self, pizza: Pizza):
         """Add a pizza item to current order if it's in the restaurant's menu"""
-        if pizza:
+        pizza_list = self.restaurant.menu_pizza_30
+        pizza_check = any(pizza.name == x.name for x in pizza_list)
+        if pizza_check:
             self.ordered_items.append(pizza)
             print(f"{pizza.name} was added to your order.")
         else:
@@ -28,7 +34,7 @@ class Order:
 
     def remove_item(self, pizza):
         """Remove a specific pizza instance from the order."""
-        if pizza.id in self.ordered_items:
+        if pizza in self.ordered_items:
             self.ordered_items.remove(pizza)
             print(f"{pizza.name} was removed from your order.")
         else:
