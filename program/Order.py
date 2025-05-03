@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from Pizza import *
-from Client import Client
+from program.Pizza import *
+from program.client_data import Client
 import uuid
 
 from Restaurant import *
