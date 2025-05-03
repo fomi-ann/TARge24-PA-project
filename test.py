@@ -22,7 +22,7 @@ if __name__ == '__main__':
     # print(pizza1.name, pizza1.toppings)
     #
     pizza123 = Margherita(ThinCrust(25))
-    pizza456 = Margherita(ThinCrust(30))
+    pizza456 = Pepperoni(ThinCrust(30))
     # print(pizza123.name)
     # print(pizza456.id)
     # print(pizza123 == pizza456)
@@ -38,20 +38,24 @@ if __name__ == '__main__':
     resto = Restaurant("Pizza Place")
     # print(resto.name)
     #
-    # client1 = Client("Anna", "Fomina")
+    resto.load_default_menu()
+    resto.get_menu_item_name()
+    print(resto.menu_pizza_25)
+    client1 = Client("Anna", "Fomina")
     # print(client1)
     #
-    # order1 = Order(client1)
+    order1 = Order(resto, client1)
     # print(order1)
     #
-    # order1.add_item(pizza123)
-    # order1.add_item(pizza456)
-    # print(order1.ordered_items)
+    order1.add_item(pizza123)
+    order1.add_item(pizza456)
+    print(order1.ordered_items)
+
+    order1.remove_item(pizza123)
+    print(order1.ordered_items)
     #
     # order1.calculate_totals()
     #
     # order1.get_summary()
-    resto.load_default_menu()
-    resto.get_menu_item_name()
-    print(pizza123.name)
+
     # print(resto)

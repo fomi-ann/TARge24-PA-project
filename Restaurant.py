@@ -3,39 +3,51 @@ from Pizza import *
 from Order import Order
 
 
-
 class Restaurant:
     def __init__(self, name):
         """Initialize Restaurant with given name."""
         self.name = name
         self.orders = []
-        self.menu = []
-
+        self.menu_items = []
+        self.menu_pizza_25 = []
+        self.menu_pizza_30 = []
 
     def __repr__(self):
-        return f'Restaurant {self.name}, menu: {self.get_menu_item_name()}'
+        return f'Restaurant {self.name}, Todays pizza choices for 25 / 30 cm; thin / thick crust: {self.get_menu_item_name()}'
 
     def add_menu_item(self, pizza: Pizza):
         """Add a menu item to the restaurant's menu"""
-        self.menu.append(pizza)
+
+        self.menu_pizza_25.append(pizza)
+        self.menu_pizza_30.append(pizza)
+
+
 
 
     def get_menu_item_name(self):
         """Return menu item name."""
-        pizza_names = ''
-        print(self.menu)
-        for pizza in self.menu:
-            pizza_names += f'{pizza.name}'
-        return pizza_names
+        pizza_25 = '25 cm Pizzas: '
+        pizza_30 = '30 cm Pizzas: '
+        for pizza in self.menu_pizza_25:
+            pizza_25 += f'{pizza.name} '
+        for pizza in self.menu_pizza_30:
+            pizza_30 += f'{pizza.name}'
+        return pizza_25 + ' ' + pizza_30
 
 
     def load_default_menu(self):
         """Add all pizza types (classes) to the menu"""
-        self.add_menu_item(Margherita)
-        self.add_menu_item(Pepperoni)
-        self.add_menu_item(BBQChicken)
-        self.add_menu_item(FourCheese)
-        self.add_menu_item(VeggieSupreme)
+        self.menu_pizza_25.append(Margherita(ThinCrust(25)))
+        self.menu_pizza_25.append(Pepperoni(ThinCrust(25)))
+        self.menu_pizza_25.append(BBQChicken(ThinCrust(25)))
+        self.menu_pizza_25.append(FourCheese(ThinCrust(25)))
+        self.menu_pizza_25.append(VeggieSupreme(ThinCrust(25)))
+
+        self.menu_pizza_30.append(Margherita(ThinCrust(30)))
+        self.menu_pizza_30.append(Pepperoni(ThinCrust(30)))
+        self.menu_pizza_30.append(BBQChicken(ThinCrust(30)))
+        self.menu_pizza_30.append(FourCheese(ThinCrust(30)))
+        self.menu_pizza_30.append(VeggieSupreme(ThinCrust(30)))
 
 
     def place_order(self, order: Order):

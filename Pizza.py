@@ -16,6 +16,9 @@ class Pizza:
     def __eq__(self, other):
         return isinstance(other, Pizza) and self.id == other.id
 
+    def __hash__(self):
+        return hash(self.id)
+
     def add_topping(self, topping):
         if topping not in self.toppings:
             self.toppings.append(topping)
