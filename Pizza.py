@@ -46,23 +46,23 @@ class ThickCrust(PizzaBase):
 
 """Topping calories dictionary."""
 Topping_calories = {
-    "Fresh mozzarella": 2.8,
-    "Shredded cheese": 3,
-    "Pepperoni slices": 5,
-    "Crushed tomatoes": 0.4,
+    "fresh mozzarella": 2.8,
+    "shredded cheese": 3,
+    "pepperoni slices": 5,
+    "crushed tomatoes": 0.4,
     "BBQ sauce": 1.2,
-    "Cooked chicken breast": 1.65,
-    "Red onion": 0.4,
-    "Bell pepper": 0.2,
-    "Mushrooms": 0.22,
-    "Black olives": 1.15,
-    "Fresh basil": 0.23,
-    "Olive oil": 8.84,
-    "Salt": 0,
-    "Tomato sauce": 0.7,
-    "Blue cheese": 3.5,
-    "Goat cheese": 2.9,
-    "Parmesan": 4.3
+    "cooked chicken breast": 1.65,
+    "red onion": 0.4,
+    "bell pepper": 0.2,
+    "mushrooms": 0.22,
+    "black olives": 1.15,
+    "fresh basil": 0.23,
+    "olive oil": 8.84,
+    "salt": 0,
+    "tomato sauce": 0.7,
+    "blue cheese": 3.5,
+    "goat cheese": 2.9,
+    "parmesan": 4.3
 }
 
 class Topping:
@@ -98,7 +98,7 @@ class Pizza:
             self.calculate_calories()
 
     def remove_topping(self, topping_name):
-        """Remove a topping by it's name."""
+        """Remove a topping by its name."""
         for topping in self.toppings:
             if topping.name == topping_name:
                 self.toppings.remove(topping)
@@ -141,86 +141,110 @@ class Pizza:
         toppings_calories = sum(t.calories for t in self.toppings)
         self.calories = round(dough_calories + toppings_calories)
 
+
 class Margherita(Pizza):
     def __init__(self, dough):
-        super().__init__('Margherita', dough)
-        self.add_topping(Topping("Crushed tomatoes", 120))
-        self.add_topping(Topping("Fresh mozzarella", 125))
-        self.add_topping(Topping("Fresh basil", 6))
-        self.add_topping(Topping("Olive oil", 15))
-        self.add_topping(Topping("Salt", 1))
+        super().__init__("Margherita", dough)
+        self.add_topping(Topping("crushed tomatoes", 120))
+        self.add_topping(Topping("fresh mozzarella", 125))
+        self.add_topping(Topping("fresh basil", 6))
+        self.add_topping(Topping("olive oil", 15))
+        self.add_topping(Topping("salt", 1))
         self.price = 10 if dough.size == 25 else 12
         self.calculate_calories()
 
+    def __repr__(self):
+        toppings_str = ", ".join(t.name for t in self.toppings)
+        return f"{self.name} pizza with {toppings_str} toppings"
+
 class Pepperoni(Pizza):
     def __init__(self, dough):
-        super().__init__('Pepperoni', dough)
-        self.add_topping(Topping("Tomato sauce", 100))
-        self.add_topping(Topping("Shredded cheese", 150))
-        self.add_topping(Topping("Pepperoni slices", 60))
-        self.add_topping(Topping("Salt", 1))
+        super().__init__("Pepperoni", dough)
+        self.add_topping(Topping("tomato sauce", 100))
+        self.add_topping(Topping("shredded cheese", 150))
+        self.add_topping(Topping("pepperoni slices", 60))
+        self.add_topping(Topping("salt", 1))
         self.price = 12 if dough.size == 25 else 15
         self.calculate_calories()
+
+    def __repr__(self):
+        toppings_str = ", ".join(t.name for t in self.toppings)
+        return f"{self.name} pizza with {toppings_str} toppings"
 
 
 class BBQChicken(Pizza):
     def __init__(self, dough):
-        super().__init__('BBQ Chicken', dough)
+        super().__init__("BBQ Chicken", dough)
         self.add_topping(Topping("BBQ sauce", 100))
-        self.add_topping(Topping("Cooked chicken breast", 120))
-        self.add_topping(Topping("Red onion", 40))
-        self.add_topping(Topping("Shredded cheese", 120))
-        self.add_topping(Topping("Salt", 1))
+        self.add_topping(Topping("cooked chicken breast", 120))
+        self.add_topping(Topping("red onion", 40))
+        self.add_topping(Topping("shredded cheese", 120))
+        self.add_topping(Topping("salt", 1))
         self.price = 12 if dough.size == 25 else 14
         self.calculate_calories()
+
+    def __repr__(self):
+        toppings_str = ", ".join(t.name for t in self.toppings)
+        return f"{self.name} pizza with {toppings_str} toppings"
 
 
 class FourCheese(Pizza):
     def __init__(self, dough):
-        super().__init__('Four Cheese', dough)
-        self.add_topping(Topping("Fresh mozzarella", 80))
-        self.add_topping(Topping("Shredded cheese", 60))
-        self.add_topping(Topping("Blue cheese", 40))
-        self.add_topping(Topping("Goat cheese", 40))
-        self.add_topping(Topping("Parmesan", 25))
+        super().__init__("Four Cheese", dough)
+        self.add_topping(Topping("fresh mozzarella", 80))
+        self.add_topping(Topping("shredded cheese", 60))
+        self.add_topping(Topping("blue cheese", 40))
+        self.add_topping(Topping("goat cheese", 40))
+        self.add_topping(Topping("parmesan", 25))
         self.price = 12 if dough.size == 25 else 14
         self.calculate_calories()
+
+    def __repr__(self):
+        toppings_str = ", ".join(t.name for t in self.toppings)
+        return f"{self.name} pizza with {toppings_str} toppings"
 
 
 class VeggieSupreme(Pizza):
     def __init__(self, dough):
-        super().__init__('Veggie Supreme', dough)
-        self.add_topping(Topping("Tomato sauce", 100))
-        self.add_topping(Topping("Shredded cheese", 130))
-        self.add_topping(Topping("Bell pepper", 40))
-        self.add_topping(Topping("Mushrooms", 40))
-        self.add_topping(Topping("Red onion", 30))
-        self.add_topping(Topping("Black olives", 20))
-        self.add_topping(Topping("Olive oil", 15))
-        self.add_topping(Topping("Salt", 1))
+        super().__init__("Veggie Supreme", dough)
+        self.add_topping(Topping("tomato sauce", 100))
+        self.add_topping(Topping("shredded cheese", 130))
+        self.add_topping(Topping("bell pepper", 40))
+        self.add_topping(Topping("mushrooms", 40))
+        self.add_topping(Topping("red onion", 30))
+        self.add_topping(Topping("black olives", 20))
+        self.add_topping(Topping("olive oil", 15))
+        self.add_topping(Topping("salt", 1))
         self.prize = 8 if dough.size == 25 else 10
         self.calculate_calories()
 
-if __name__ == '__main__':
-    fourcheese = FourCheese(ThickCrust(30))
-    print(f"{fourcheese.name}: {fourcheese.price}€, {fourcheese.calories} kcal")
+    def __repr__(self):
+        toppings_str = ", ".join(t.name for t in self.toppings)
+        return f"{self.name} pizza with {toppings_str} toppings"
 
-    custom = Pizza("Custom pizza", ThinCrust(25))
-    custom.add_topping(Topping("Fresh mozzarella", 80))
-    custom.add_topping(Topping("Shredded cheese", 60))
-    custom.add_topping(Topping("Blue cheese", 40))
-    custom.add_topping(Topping("Goat cheese", 40))
-    custom.add_topping(Topping("Parmesan", 25))
-    print(f"{custom.name}: {custom.price}€, {custom.calories} kcal")
+    if __name__ == '__main__':
+        fourcheese = FourCheese(ThickCrust(30))
+        print(f"{fourcheese.name}: {fourcheese.price}€, {fourcheese.calories} kcal")
 
-    pizza1 = FourCheese(ThinCrust(25))
-    print(pizza1.name, pizza1.toppings)
-    pizza1.remove_topping("Blue cheese")
-    print(pizza1.name, pizza1.toppings)
+        custom = Pizza("Custom pizza", ThinCrust(25))
+        custom.add_topping(Topping("fresh mozzarella", 80))
+        custom.add_topping(Topping("shredded cheese", 60))
+        custom.add_topping(Topping("blue cheese", 40))
+        custom.add_topping(Topping("goat cheese", 40))
+        custom.add_topping(Topping("parmesan", 25))
+        print(f"{custom.name}: {custom.price}€, {custom.calories} kcal")
 
-    Pizza123 = Margherita(ThinCrust(25))
-    Pizza456 = Margherita(ThinCrust(25))
-    print(Pizza123.id)
-    print(Pizza456.id)
-    print(Pizza123 == Pizza456)
+        pizza1 = FourCheese(ThinCrust(25))
+        print(pizza1.name, pizza1.toppings)
+        pizza1.remove_topping("blue cheese")
+        print(pizza1.name, pizza1.toppings)
+
+        Pizza123 = Margherita(ThinCrust(25))
+        Pizza456 = Margherita(ThinCrust(25))
+        print(Pizza123.id)
+        print(Pizza456.id)
+        print(Pizza123 == Pizza456)
+
+        pizza122 = Margherita(ThinCrust(25))
+        print(pizza122)
 
