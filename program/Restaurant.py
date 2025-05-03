@@ -1,5 +1,6 @@
 
 from program.Pizza import *
+from program.PizzaBase import *
 from program.Order import Order
 
 

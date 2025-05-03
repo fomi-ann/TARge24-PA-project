@@ -1,7 +1,7 @@
 from program.Restaurant import *
 from program.Pizza import *
 from program.PizzaBase import *
-import Client
+from program.client_data import Client
 
 
 
