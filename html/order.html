@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="row d-flex justify-content-center align-items-center">
+    <div class="text-center">
+        <h1 id="restaurant-name">Pizza Place</h1>
+    </div>
+    <div class="text-center mt-5">
+        <h2 id="headline">Order nr:</h2>
+        <h2 id="order-nr">12345-67890-54321-09876</h2>
+    </div>
+    <div class="card p-0 w-50 rounded-2">
+        <div class="card-body">
+            <div class="row">
+                <h3>Client:</h3>
+                
+                <p>First name: <span id="first-name">Someone</span></p>
+                
+
+                <p>Last name: <span id="last-name">Hungry</span></p>
+
+                <h3>Oredered items:</h3>
+                <div class="col justify-content-center">
+                    <ol id="ordered-items" class="list-group list-group-flush list-group-numbered">
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="me-3">Pizza name</span>
+                            <div class="d-flex align-items-center gap-5">
+                                <p><span id="pizza-price">12</span> EUR</p>
+                                <p><span id="pizza-kcal">1234</span> kcal</p>
+                                
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="me-3">Pizza name</span>
+                            <div class="d-flex align-items-center gap-5">
+                                <p><span id="pizza-price">12</span> EUR</p>
+                                <p><span id="pizza-kcal">1234</span> kcal</p>
+                                
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="me-3">Pizza name</span>
+                            <div class="d-flex align-items-center gap-5">
+                                <p><span id="pizza-price">12</span> EUR</p>
+                                <p><span id="pizza-kcal">1234</span> kcal</p>
+                                
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <h3>Summary:</h3>
+                <ul class="list-group list-group-flush text-end">
+                    <li class="list-group-item">Total Price: <span>12</span> EUR</li>
+                    <li class="list-group-item">Total Calories: <span>1234</span> kcal</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <button id="btn-confirm-order" type="submit" class="btn btn-dark">CONFIRM ORDER</button>
+        </div>
+    </div>
+</body>
+</html>
