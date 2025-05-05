@@ -11,7 +11,7 @@ class Restaurant:
         self.menu_items = ['Margherita', 'Pepperoni', 'BBQChicken', 'BBQChicken', 'FourCheese', 'VeggieSupreme']
 
     def __repr__(self):
-        return f'Restaurant {self.name}, Todays pizza choices for 25 / 30 cm; thin / thick crust: {self.get_menu_item_name()}'
+        return f"Restaurant {self.name}, Today's pizza choices for 25 / 30 cm; thin / thick crust: {self.get_menu_item_name()}"
 
     def add_menu_item(self, pizza: Pizza):
         """Add a menu item to the restaurant's menu"""

@@ -1,3 +1,5 @@
+from numpy.ma.core import append
+
 from program.clientData.client_data import *
 from Order import *
 from Pizza import *
@@ -39,13 +41,34 @@ def add_pizza_class_to_order(name, crust, size):
         else:
             order.add_item(VeggieSupreme(ThickCrust(size)))
 
+
+def ask_user_for_pizza_name(restaurant):
+    """
+    1. Creates a list of numbers from 1 to the length of the restaurants menu items.
+    2. Asks the user for an input ranging from 1 to restaurant menu length.
+    3. Prints invalid input in case of an invalid input.
+    4. Returns the restaurant menu items position.
+    """
+    correct_inputs = []
+    for x in range(1, len(restaurant.menu_items) + 1):
+        correct_inputs.append(str(x))
+
+    while True:
+        name_nr = input(f"Please choose a pizza number from the listing (1/{len(restaurant.menu_items)}): ")
+        if user_input_control(name_nr, correct_inputs):
+            return restaurant.menu_items[int(name_nr) - 1]
+        else:
+            print("Invalid input please try again.")
+
+
 if __name__ == '__main__':
     restaurant = Restaurant("Pizza place")
     client = GuestClient('1234567890123456', 'Kevin', 'Randla')
-    pizza_name = 'Margherita'
-    pizza_crust = 0  # 0 for thin, 1 for thick
-    pizza_size = 25
-    order = Order(restaurant,client)
-    add_pizza_class_to_order(pizza_name, pizza_crust, pizza_size)
-    print(order)
-
+    print(restaurant.menu_items)
+    print(ask_user_for_pizza_name(restaurant))
+    # pizza_name = 'Margherita'
+    # pizza_crust = 0  # 0 for thin, 1 for thick
+    # pizza_size = 25
+    order = Order(restaurant, client)
+    # add_pizza_class_to_order(pizza_name, pizza_crust, pizza_size)
+    # print(order)
