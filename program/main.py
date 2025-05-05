@@ -54,7 +54,7 @@ def ask_user_for_pizza_name(restaurant):
         correct_inputs.append(str(x))
 
     while True:
-        name_nr = input(f"Please choose a pizza number from the listing (1/{len(restaurant.menu_items)}): ")
+        name_nr = input(f"Please choose a pizza number from the listing (1 to {len(restaurant.menu_items)}): ")
         if user_input_control(name_nr, correct_inputs):
             return restaurant.menu_items[int(name_nr) - 1]
         else:
@@ -71,12 +71,23 @@ def ask_user_for_crust():
             print("Please enter a valid input.")
 
 
+def ask_user_for_pizza_size():
+    correct_inputs = ['25', '30']
+    while True:
+        size = input("What size do you want your pizza?(25/30): ")
+        if user_input_control(size, correct_inputs):
+            return int(size)
+        else:
+            print("Please enter a valid input.")
+
+
 if __name__ == '__main__':
     restaurant = Restaurant("Pizza place")
     client = GuestClient('1234567890123456', 'Kevin', 'Randla')
-    print(restaurant.menu_items)
-    print(ask_user_for_pizza_name(restaurant))
-    print(ask_user_for_crust())
+    # print(restaurant.menu_items)
+    # print(ask_user_for_pizza_name(restaurant))
+    # print(ask_user_for_crust())
+    print(type(ask_user_for_pizza_size()))
     # pizza_name = 'Margherita'
     # pizza_crust = 0  # 0 for thin, 1 for thick
     # pizza_size = 25
