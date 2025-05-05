@@ -7,7 +7,12 @@ from Topping import *
 from program.clientData.guestClient import GuestClient
 
 
-def pizza_choice(name, crust, size):
+def add_pizza_class_to_order(name, crust, size):
+    """
+        Creates a new pizza class and
+        adds the item into the order class item list
+        using add_item method.
+    """
     if name == 'Margherita':
         if crust == 0:
             order.add_item(Margherita(ThinCrust(size)))
@@ -37,10 +42,10 @@ def pizza_choice(name, crust, size):
 if __name__ == '__main__':
     restaurant = Restaurant("Pizza place")
     client = GuestClient('1234567890123456', 'Kevin', 'Randla')
-    pizza_name = 'margherita'
+    pizza_name = 'Margherita'
     pizza_crust = 0  # 0 for thin, 1 for thick
     pizza_size = 25
     order = Order(restaurant,client)
-    pizza_choice(pizza_name, pizza_crust, pizza_size)
+    add_pizza_class_to_order(pizza_name, pizza_crust, pizza_size)
     print(order)
 
