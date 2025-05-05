@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream:program/client_data/client_data.py
-import program.client_data.client_db_mgmt
-from program.client_data import client_db_mgmt
-=======
 from program.clientData import client_db_mgmt
->>>>>>> Stashed changes:program/clientData/client_data.py
 
 
 def check_numbers_in_name(name):

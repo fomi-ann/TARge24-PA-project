@@ -3,15 +3,9 @@ import csv
 import json
 import pandas as pd
 
-<<<<<<< Updated upstream:program/client_data/client_db_mgmt.py
-from program.client_data.Client import Client
-from program.client_data.guestClient import GuestClient
-from program.client_data.registeredClient import RegisteredClient
-=======
 from program.clientData import Client
 from program.clientData.guestClient import GuestClient
 from program.clientData.registeredClient import RegisteredClient
->>>>>>> Stashed changes:program/clientData/client_db_mgmt.py
 
 client_db = None
 

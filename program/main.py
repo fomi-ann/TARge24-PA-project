@@ -1,12 +1,3 @@
-<<<<<<< Updated upstream
-from program.client_data import client_db_mgmt
-from client_data import client_data
-from client_data import Client
-
-if __name__ == '__main__':
-    client_db_mgmt.read_db()
-    client_data.user_operation_check()
-=======
 from program.clientData.client_data import *
 from Order import *
 from Pizza import *
@@ -52,4 +43,4 @@ if __name__ == '__main__':
     order = Order(restaurant,client)
     pizza_choice(pizza_name, pizza_crust, pizza_size)
     print(order)
->>>>>>> Stashed changes
+
