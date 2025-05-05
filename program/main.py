@@ -62,6 +62,10 @@ def ask_user_for_pizza_name(restaurant):
 
 
 def ask_user_for_crust():
+    """
+    Asks the user to input thick or thin.
+    Returns the input.
+    """
     correct_inputs = ['thick', 'thin']
     while True:
         crust = input("Do you want a thick or thin crust?(thick/thin): ").lower()
@@ -72,6 +76,10 @@ def ask_user_for_crust():
 
 
 def ask_user_for_pizza_size():
+    """
+    Asks the user to input 25 or 30.
+    Returns the input as integer.
+    """
     correct_inputs = ['25', '30']
     while True:
         size = input("What size do you want your pizza?(25/30): ")
