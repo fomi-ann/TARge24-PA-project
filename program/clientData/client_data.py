@@ -98,7 +98,7 @@ def ask_user_id():
 
     while True:
         id = input("Please insert your id: ")
-        db = client_db_mgmt.client_db
+        db = client_db_mgmt.read_db()
         db_check = any(id in x for x in db)
         if db_check:
             return id

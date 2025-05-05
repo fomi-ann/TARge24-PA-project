@@ -1,4 +1,4 @@
-import client_data
+from client_data import *
 import client_db_mgmt
 import csv
 import pandas as pd
@@ -18,6 +18,5 @@ if __name__ == '__main__':
     # # print(df.loc[0])
     # # df.drop(df.index[2], inplace=True)
     # # df.to_csv('registeredClientsTest.csv', index = False)
-    client_db_mgmt.read_db()
-    client_data.user_operation_check()
+    user_operation_check()
 
