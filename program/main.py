@@ -104,8 +104,9 @@ if __name__ == '__main__':
     client = user_operation_check()
     order = Order(restaurant, client)
 
+    print("")
     print(f"Hello {client.get_full_name()}! It is a perfect time to have some pizza!\nTake a look at our menu:")
-
+    print("")
     for idx, item in enumerate(restaurant.menu_items, start=1):
         pizzaThin25 = add_pizza_class_to_order(item, 'thin', 25)
         pizzaThin30 = add_pizza_class_to_order(item, 'thin', 30)
