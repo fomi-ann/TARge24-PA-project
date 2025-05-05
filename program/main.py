@@ -16,27 +16,27 @@ def add_pizza_class_to_order(name, crust, size):
         using add_item method.
     """
     if name == 'Margherita':
-        if crust == 0:
+        if crust == 'thin':
             return Margherita(ThinCrust(size))
         else:
             return Margherita(ThickCrust(size))
     if name == 'Pepperoni':
-        if crust == 0:
+        if crust == 'thin':
             return Pepperoni(ThinCrust(size))
         else:
             return Pepperoni(ThickCrust(size))
     if name == 'BBQ Chicken':
-        if crust == 0:
+        if crust == 'thin':
             return BBQChicken(ThinCrust(size))
         else:
             return BBQChicken(ThickCrust(size))
     if name == 'Four Cheese':
-        if crust == 0:
+        if crust == 'thin':
             return FourCheese(ThinCrust(size))
         else:
             return FourCheese(ThickCrust(size))
     if name == 'Veggie Supreme':
-        if crust == 0:
+        if crust == 'thin':
             return VeggieSupreme(ThinCrust(size))
         else:
             return VeggieSupreme(ThickCrust(size))
@@ -98,11 +98,32 @@ def ask_user_for_pizza_param(restaurant):
     size = ask_user_for_pizza_size()
     order.add_item(add_pizza_class_to_order(name,crust,size))
 
+
 if __name__ == '__main__':
     restaurant = Restaurant("Pizza place")
     client = user_operation_check()
     order = Order(restaurant, client)
 
-    ask_user_for_pizza_param(restaurant) #pitsa sisestamine orderisse
+    print(f"Hello {client.get_full_name()}! It is a perfect time to have some pizza!\nTake a look at our menu:")
+
+    for idx, item in enumerate(restaurant.menu_items, start=1):
+        pizzaThin25 = add_pizza_class_to_order(item, 'thin', 25)
+        pizzaThin30 = add_pizza_class_to_order(item, 'thin', 30)
+        pizzaThick25 = add_pizza_class_to_order(item, 'thick', 25)
+        pizzaThick30 = add_pizza_class_to_order(item, 'thick', 30)
+        print(f"{idx}. {item}")
+        print(f"Thin 25cm price: {pizzaThin25.price}€ -- Thick 25cm price: {pizzaThick25.price}€")
+        print(f"Thin 30cm price: {pizzaThin30.price}€ -- Thick 30cm price: {pizzaThick30.price}€")
+        print("-----------")
+
+    while True:
+        ask_user_for_pizza_param(restaurant)#pitsa sisestamine orderisse
+        correct_inputs = ['yes', 'y', 'no', 'n']
+        continue_check = input("Do you want to buy another pizza?(y/n): ").lower()
+        if user_input_control(continue_check, correct_inputs):
+            if continue_check in correct_inputs[0:2]:
+                pass
+            else:
+                break
 
     order.get_summary()
