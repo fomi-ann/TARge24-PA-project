@@ -49,6 +49,7 @@ class Order:
 
     def get_summary(self):
         """Print the summary of the order"""
+        self.calculate_totals()
         summary = f"Order ID: {self.id}\n"
         summary += f"Client: {self.client.first_name if self.client else 'Unknown'}\n"
         summary += "Ordered items:\n"
