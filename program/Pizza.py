@@ -98,7 +98,7 @@ class Margherita(Pizza):
     def __repr__(self):
         """String representation of the Margherita pizza."""
         toppings_str = ", ".join(t.name for t in self.toppings)
-        return f"{self.name} pizza with {toppings_str} toppings"
+        return f"{self.name} pizza with {toppings_str} toppings."
 
 class Pepperoni(Pizza):
     def __init__(self, dough):
@@ -118,7 +118,7 @@ class Pepperoni(Pizza):
     def __repr__(self):
         """String representation of the Pepperoni pizza."""
         toppings_str = ", ".join(t.name for t in self.toppings)
-        return f"{self.name} pizza with {toppings_str} toppings"
+        return f"{self.name} pizza with {toppings_str} toppings."
 
 
 class BBQChicken(Pizza):
@@ -140,7 +140,7 @@ class BBQChicken(Pizza):
     def __repr__(self):
         """String representation of the BBQ Chicken pizza."""
         toppings_str = ", ".join(t.name for t in self.toppings)
-        return f"{self.name} pizza with {toppings_str} toppings"
+        return f"{self.name} pizza with {toppings_str} toppings."
 
 
 class FourCheese(Pizza):
@@ -162,7 +162,7 @@ class FourCheese(Pizza):
     def __repr__(self):
         """String representation of the Four Cheese pizza."""
         toppings_str = ", ".join(t.name for t in self.toppings)
-        return f"{self.name} pizza with {toppings_str} toppings"
+        return f"{self.name} pizza with {toppings_str} toppings."
 
 
 class VeggieSupreme(Pizza):
@@ -187,7 +187,7 @@ class VeggieSupreme(Pizza):
     def __repr__(self):
         """String representation of the Veggie Supreme pizza."""
         toppings_str = ", ".join(t.name for t in self.toppings)
-        return f"{self.name} pizza with {toppings_str} toppings"
+        return f"{self.name} pizza with {toppings_str} toppings."
 
 if __name__ == '__main__':
     fourcheese = FourCheese(PizzaBase.ThickCrust(30))
