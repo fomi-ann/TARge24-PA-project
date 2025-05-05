@@ -25,17 +25,17 @@ def add_pizza_class_to_order(name, crust, size):
             order.add_item(Pepperoni(ThinCrust(size)))
         else:
             order.add_item(Pepperoni(ThickCrust(size)))
-    if name == 'BBQChicken':
+    if name == 'BBQ Chicken':
         if crust == 0:
             order.add_item(BBQChicken(ThinCrust(size)))
         else:
             order.add_item(BBQChicken(ThickCrust(size)))
-    if name == 'FourCheese':
+    if name == 'Four Cheese':
         if crust == 0:
             order.add_item(FourCheese(ThinCrust(size)))
         else:
             order.add_item(FourCheese(ThickCrust(size)))
-    if name == 'VeggieSupreme':
+    if name == 'Veggie Supreme':
         if crust == 0:
             order.add_item(VeggieSupreme(ThinCrust(size)))
         else:
@@ -88,17 +88,23 @@ def ask_user_for_pizza_size():
         else:
             print("Please enter a valid input.")
 
+def ask_user_for_pizza_param(restaurant):
+    """
+    Creates 3 variables which the method sends to
+    add pizza class to order method.
+    """
+    name = ask_user_for_pizza_name(restaurant)
+    crust = ask_user_for_crust()
+    size = ask_user_for_pizza_size()
+    add_pizza_class_to_order(name,crust,size)
 
 if __name__ == '__main__':
     restaurant = Restaurant("Pizza place")
     client = GuestClient('1234567890123456', 'Kevin', 'Randla')
-    # print(restaurant.menu_items)
-    # print(ask_user_for_pizza_name(restaurant))
-    # print(ask_user_for_crust())
-    print(type(ask_user_for_pizza_size()))
+    order = Order(restaurant, client)
+    ask_user_for_pizza_param(restaurant)
     # pizza_name = 'Margherita'
     # pizza_crust = 0  # 0 for thin, 1 for thick
     # pizza_size = 25
-    order = Order(restaurant, client)
     # add_pizza_class_to_order(pizza_name, pizza_crust, pizza_size)
-    # print(order)
+    print(order)

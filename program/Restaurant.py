@@ -8,7 +8,7 @@ class Restaurant:
         """Initialize Restaurant with given name."""
         self.name = name
         self.orders = []
-        self.menu_items = ['Margherita', 'Pepperoni', 'BBQChicken', 'BBQChicken', 'FourCheese', 'VeggieSupreme']
+        self.menu_items = ['Margherita', 'Pepperoni', 'BBQ Chicken', 'Four Cheese', 'Veggie Supreme']
 
     def __repr__(self):
         return f"Restaurant {self.name}, Today's pizza choices for 25 / 30 cm; thin / thick crust: {self.get_menu_item_name()}"
