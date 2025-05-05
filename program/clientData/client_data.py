@@ -1,5 +1,9 @@
+<<<<<<< Updated upstream:program/client_data/client_data.py
 import program.client_data.client_db_mgmt
 from program.client_data import client_db_mgmt
+=======
+from program.clientData import client_db_mgmt
+>>>>>>> Stashed changes:program/clientData/client_data.py
 
 
 def check_numbers_in_name(name):
@@ -111,7 +115,7 @@ def ask_user_id():
             print("You have entered an invalid id or you're not registered.")
 
 
-def user_operation_check() -> None:
+def user_operation_check():
     """Checks if the user wants to log in, register or continue as a guest."""
     correct_inputs = ["r", "register", "l", "login", "continue", "c"]
     while True:
@@ -121,17 +125,14 @@ def user_operation_check() -> None:
             if user_input in correct_inputs[0:2]:
                 # Client registration
                 new_id = client_db_mgmt.create_client_id()
-                client_db_mgmt.init_client(get_user_data(), new_id)
-                return
+                return client_db_mgmt.init_client(get_user_data(), new_id)
             elif user_input in correct_inputs[2:4]:
                 # Client login
                 # NEED TO SEND CLIENT ID TO CLIENT INIT
                 # CREATE METHOD FOR GETTING CLIENT ID
-                client_db_mgmt.init_client(user_id= ask_user_id())
-                return
+                return client_db_mgmt.init_client(user_id= ask_user_id())
             else:
                 # Guest session
-                client_db_mgmt.init_client(get_user_data())
-                return
+                return client_db_mgmt.init_client(get_user_data())
         else:
             print("You have inserted an invalid operation. Please select a valid one.")

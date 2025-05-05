@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream:program/client_data/guestClient.py
 from program.client_data.Client import Client
+=======
+from program.clientData.Client import *
+>>>>>>> Stashed changes:program/clientData/guestClient.py
 
 class GuestClient(Client):
     """GuestClient is a subclass of Client"""

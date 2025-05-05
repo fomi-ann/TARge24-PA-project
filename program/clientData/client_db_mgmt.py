@@ -3,9 +3,15 @@ import csv
 import json
 import pandas as pd
 
+<<<<<<< Updated upstream:program/client_data/client_db_mgmt.py
 from program.client_data.Client import Client
 from program.client_data.guestClient import GuestClient
 from program.client_data.registeredClient import RegisteredClient
+=======
+from program.clientData import Client
+from program.clientData.guestClient import GuestClient
+from program.clientData.registeredClient import RegisteredClient
+>>>>>>> Stashed changes:program/clientData/client_db_mgmt.py
 
 client_db = None
 
@@ -71,7 +77,7 @@ def init_client(user_data: list = None, user_id=None):
     if user_id is None and user_data is not None:
         # Guest client initiation
         client = GuestClient(*user_data)
-        return
+        return client
     elif user_id is not None and user_data is None:
         # Registered user initiation from database
         read_db()
@@ -102,7 +108,7 @@ def init_client(user_data: list = None, user_id=None):
         client.set_client_id(user_id)
         client.init_orders(client_data[3], client_data[4])
 
-        return
+        return client
     else:
         # 1. New registered user initiation
         # 2. save to database
@@ -111,7 +117,7 @@ def init_client(user_data: list = None, user_id=None):
         client.set_client_id(user_id)
         print(f"Your new id is: {client.get_client_id()}")
         save_client_to_db(client)
-        return
+        return client
 
 
 def create_client_id() -> str:

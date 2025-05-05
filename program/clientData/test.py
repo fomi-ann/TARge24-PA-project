@@ -3,8 +3,8 @@ import client_db_mgmt
 import csv
 import pandas as pd
 
-from program.client_data.client_db_mgmt import init_client
-from program.client_data.registeredClient import RegisteredClient
+from program.clientData.client_db_mgmt import init_client
+from program.clientData.registeredClient import RegisteredClient
 
 if __name__ == '__main__':
     # df = pd.read_csv('registeredClientsTest.csv', delimiter=":")
