@@ -96,7 +96,7 @@ def ask_user_for_pizza_param(restaurant):
     name = ask_user_for_pizza_name(restaurant)
     crust = ask_user_for_crust()
     size = ask_user_for_pizza_size()
-    add_pizza_class_to_order(name,crust,size)
+    order.add_item(add_pizza_class_to_order(name,crust,size))
 
 if __name__ == '__main__':
     restaurant = Restaurant("Pizza place")
