@@ -23,7 +23,8 @@ Topping_calories = {
     "shredded cheese": 3,
     "pepperoni slices": 5,
     "crushed tomatoes": 0.4,
-    "BBQ sauce": 1.2,
+    # Anna corrected name
+    "bbq sauce": 1.2,
     "cooked chicken breast": 1.65,
     "red onion": 0.4,
     "bell pepper": 0.2,

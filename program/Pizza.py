@@ -1,6 +1,6 @@
 import uuid
-from program.Topping import Topping
-from program.PizzaBase import PizzaBase, ThickCrust
+from Topping import Topping
+from PizzaBase import PizzaBase, ThickCrust
 
 
 class Pizza:

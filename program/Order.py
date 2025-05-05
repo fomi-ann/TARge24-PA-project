@@ -24,7 +24,7 @@ class Order:
 
     def add_item(self, pizza: Pizza):
         """Add a pizza item to current order if it's in the restaurant's menu"""
-        pizza_list = self.restaurant.menu_pizza_30
+        pizza_list = self.restaurant.menu
         pizza_check = any(pizza.name == x.name for x in pizza_list)
         if pizza_check:
             self.ordered_items.append(pizza)
