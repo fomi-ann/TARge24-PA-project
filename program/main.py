@@ -17,29 +17,29 @@ def add_pizza_class_to_order(name, crust, size):
     """
     if name == 'Margherita':
         if crust == 0:
-            order.add_item(Margherita(ThinCrust(size)))
+            return Margherita(ThinCrust(size))
         else:
-            order.add_item(Margherita(ThickCrust(size)))
+            return Margherita(ThickCrust(size))
     if name == 'Pepperoni':
         if crust == 0:
-            order.add_item(Pepperoni(ThinCrust(size)))
+            return Pepperoni(ThinCrust(size))
         else:
-            order.add_item(Pepperoni(ThickCrust(size)))
+            return Pepperoni(ThickCrust(size))
     if name == 'BBQ Chicken':
         if crust == 0:
-            order.add_item(BBQChicken(ThinCrust(size)))
+            return BBQChicken(ThinCrust(size))
         else:
-            order.add_item(BBQChicken(ThickCrust(size)))
+            return BBQChicken(ThickCrust(size))
     if name == 'Four Cheese':
         if crust == 0:
-            order.add_item(FourCheese(ThinCrust(size)))
+            return FourCheese(ThinCrust(size))
         else:
-            order.add_item(FourCheese(ThickCrust(size)))
+            return FourCheese(ThickCrust(size))
     if name == 'Veggie Supreme':
         if crust == 0:
-            order.add_item(VeggieSupreme(ThinCrust(size)))
+            return VeggieSupreme(ThinCrust(size))
         else:
-            order.add_item(VeggieSupreme(ThickCrust(size)))
+            return VeggieSupreme(ThickCrust(size))
 
 
 def ask_user_for_pizza_name(restaurant):
@@ -100,11 +100,9 @@ def ask_user_for_pizza_param(restaurant):
 
 if __name__ == '__main__':
     restaurant = Restaurant("Pizza place")
-    client = GuestClient('1234567890123456', 'Kevin', 'Randla')
+    client = user_operation_check()
     order = Order(restaurant, client)
-    ask_user_for_pizza_param(restaurant)
-    # pizza_name = 'Margherita'
-    # pizza_crust = 0  # 0 for thin, 1 for thick
-    # pizza_size = 25
-    # add_pizza_class_to_order(pizza_name, pizza_crust, pizza_size)
-    print(order)
+
+    ask_user_for_pizza_param(restaurant) #pitsa sisestamine orderisse
+
+    order.get_summary()
