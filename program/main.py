@@ -61,11 +61,22 @@ def ask_user_for_pizza_name(restaurant):
             print("Invalid input please try again.")
 
 
+def ask_user_for_crust():
+    correct_inputs = ['thick', 'thin']
+    while True:
+        crust = input("Do you want a thick or thin crust?(thick/thin): ").lower()
+        if user_input_control(crust, correct_inputs):
+            return crust
+        else:
+            print("Please enter a valid input.")
+
+
 if __name__ == '__main__':
     restaurant = Restaurant("Pizza place")
     client = GuestClient('1234567890123456', 'Kevin', 'Randla')
     print(restaurant.menu_items)
     print(ask_user_for_pizza_name(restaurant))
+    print(ask_user_for_crust())
     # pizza_name = 'Margherita'
     # pizza_crust = 0  # 0 for thin, 1 for thick
     # pizza_size = 25
