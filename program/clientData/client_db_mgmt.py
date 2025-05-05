@@ -3,9 +3,15 @@ import csv
 import json
 import pandas as pd
 
-from program.client_data.Client import *
-from program.client_data.guestClient import *
-from program.client_data.registeredClient import *
+<<<<<<< Updated upstream:program/client_data/client_db_mgmt.py
+from program.client_data.Client import Client
+from program.client_data.guestClient import GuestClient
+from program.client_data.registeredClient import RegisteredClient
+=======
+from program.clientData import Client
+from program.clientData.guestClient import GuestClient
+from program.clientData.registeredClient import RegisteredClient
+>>>>>>> Stashed changes:program/clientData/client_db_mgmt.py
 
 client_db = None
 
@@ -57,7 +63,7 @@ def remove_client_from_db(client_id):
     for n in range(len(df)):
         if df.iloc[n]['client_id'] == client_id:
             df.drop(df.index[n], inplace=True)
-            df.to_csv('client_data/registeredClients.csv', index=False, sep=":")
+            df.to_csv('client_data/registeredClients.csv', index= False, sep=":")
             break
 
 

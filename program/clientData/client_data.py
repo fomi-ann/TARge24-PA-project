@@ -1,4 +1,9 @@
-from program.client_data.client_db_mgmt import *
+<<<<<<< Updated upstream:program/client_data/client_data.py
+import program.client_data.client_db_mgmt
+from program.client_data import client_db_mgmt
+=======
+from program.clientData import client_db_mgmt
+>>>>>>> Stashed changes:program/clientData/client_data.py
 
 
 def check_numbers_in_name(name):
@@ -125,7 +130,7 @@ def user_operation_check():
                 # Client login
                 # NEED TO SEND CLIENT ID TO CLIENT INIT
                 # CREATE METHOD FOR GETTING CLIENT ID
-                return client_db_mgmt.init_client(user_id=ask_user_id())
+                return client_db_mgmt.init_client(user_id= ask_user_id())
             else:
                 # Guest session
                 return client_db_mgmt.init_client(get_user_data())

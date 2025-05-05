@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream:program/client_data/registeredClient.py
+from program.client_data.Client import Client
+import client_data
+=======
 from program.clientData.Client import *
 from program.clientData.client_data import *
+>>>>>>> Stashed changes:program/clientData/registeredClient.py
 
 
 class RegisteredClient(Client):
