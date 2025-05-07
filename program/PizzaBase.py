@@ -19,7 +19,6 @@ class PizzaBase:
         """Return a string representation of the pizza size."""
         return f"{self.size} cm pizza"
 
-
 class ThinCrust(PizzaBase):
     """
     Set a thin crust pizza ingredients based on pizza size.

@@ -5,13 +5,8 @@ from program.PizzaBase import PizzaBase, ThickCrust
 
 class Pizza:
     """General pizza class."""
-    def __init__(self, name, dough: PizzaBase):
-        """
-        Initialize a pizza object.
 
-        :param name: Name of the pizza.
-        :param dough: Pizza base dough.
-        """
+    def __init__(self, name, dough: PizzaBase):
         self.name = name
         self.dough = dough
         self.toppings = []
@@ -20,23 +15,16 @@ class Pizza:
         self.id = str(uuid.uuid4())
 
     def __eq__(self, other):
-        """
-        Check if two pizzas are equal based on their unique ID.
-
-        :param other: Another pizza to compare.
-        :return: True if the pizzas are the same, False otherwise.
-        """
         return isinstance(other, Pizza) and self.id == other.id
 
     def add_topping(self, topping: Topping):
-        """Add a topping to the pizza if it's not already present."""
         if topping not in self.toppings:
             self.toppings.append(topping)
             self._set_price()
             self.calculate_calories()
 
     def remove_topping(self, topping_name: Topping):
-        """Remove a topping from pizza by its name."""
+        """Remove a topping by its name."""
         for topping in self.toppings:
             if topping.name == topping_name:
                 self.toppings.remove(topping)
@@ -81,11 +69,6 @@ class Pizza:
 
 class Margherita(Pizza):
     def __init__(self, dough):
-        """
-        Initialize Margherita pizza with predefined toppings.
-
-        :param dough: Pizza base dough.
-        """
         super().__init__("Margherita", dough)
         self.add_topping(Topping("crushed tomatoes", 120))
         self.add_topping(Topping("fresh mozzarella", 125))
@@ -96,17 +79,12 @@ class Margherita(Pizza):
         self.calculate_calories()
 
     def __repr__(self):
-        """String representation of the Margherita pizza."""
         toppings_str = ", ".join(t.name for t in self.toppings)
-        return f"{self.name} pizza with {toppings_str} toppings."
+        return f"{self.name} pizza with {toppings_str} toppings"
+
 
 class Pepperoni(Pizza):
     def __init__(self, dough):
-        """
-        Initialize Pepperoni pizza with predefined toppings.
-
-        :param dough: Pizza base dough.
-        """
         super().__init__("Pepperoni", dough)
         self.add_topping(Topping("tomato sauce", 100))
         self.add_topping(Topping("shredded cheese", 150))
@@ -116,18 +94,12 @@ class Pepperoni(Pizza):
         self.calculate_calories()
 
     def __repr__(self):
-        """String representation of the Pepperoni pizza."""
         toppings_str = ", ".join(t.name for t in self.toppings)
-        return f"{self.name} pizza with {toppings_str} toppings."
+        return f"{self.name} pizza with {toppings_str} toppings"
 
 
 class BBQChicken(Pizza):
     def __init__(self, dough):
-        """
-        Initialize BBQ Chicken pizza with predefined toppings.
-
-        :param dough: Pizza base dough.
-        """
         super().__init__("BBQ Chicken", dough)
         self.add_topping(Topping("BBQ sauce", 100))
         self.add_topping(Topping("cooked chicken breast", 120))
@@ -138,18 +110,12 @@ class BBQChicken(Pizza):
         self.calculate_calories()
 
     def __repr__(self):
-        """String representation of the BBQ Chicken pizza."""
         toppings_str = ", ".join(t.name for t in self.toppings)
-        return f"{self.name} pizza with {toppings_str} toppings."
+        return f"{self.name} pizza with {toppings_str} toppings"
 
 
 class FourCheese(Pizza):
     def __init__(self, dough):
-        """
-        Initialize Four Cheese pizza with predefined toppings.
-
-        :param dough: Pizza base dough.
-        """
         super().__init__("Four Cheese", dough)
         self.add_topping(Topping("fresh mozzarella", 80))
         self.add_topping(Topping("shredded cheese", 60))
@@ -160,18 +126,12 @@ class FourCheese(Pizza):
         self.calculate_calories()
 
     def __repr__(self):
-        """String representation of the Four Cheese pizza."""
         toppings_str = ", ".join(t.name for t in self.toppings)
-        return f"{self.name} pizza with {toppings_str} toppings."
+        return f"{self.name} pizza with {toppings_str} toppings"
 
 
 class VeggieSupreme(Pizza):
     def __init__(self, dough):
-        """
-        Initialize Veggie Supreme pizza with predefined toppings.
-
-        :param dough: Pizza base dough.
-        """
         super().__init__("Veggie Supreme", dough)
         self.add_topping(Topping("tomato sauce", 100))
         self.add_topping(Topping("shredded cheese", 130))
@@ -185,9 +145,9 @@ class VeggieSupreme(Pizza):
         self.calculate_calories()
 
     def __repr__(self):
-        """String representation of the Veggie Supreme pizza."""
         toppings_str = ", ".join(t.name for t in self.toppings)
-        return f"{self.name} pizza with {toppings_str} toppings."
+        return f"{self.name} pizza with {toppings_str} toppings"
+
 
 if __name__ == '__main__':
     fourcheese = FourCheese(PizzaBase.ThickCrust(30))

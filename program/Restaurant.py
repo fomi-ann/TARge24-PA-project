@@ -1,4 +1,3 @@
-
 from program.Pizza import *
 from program.PizzaBase import *
 from program.Order import Order
@@ -9,47 +8,22 @@ class Restaurant:
         """Initialize Restaurant with given name."""
         self.name = name
         self.orders = []
-        self.menu_items = []
-        self.menu_pizza_25 = []
-        self.menu_pizza_30 = []
+        self.menu_items = ['Margherita', 'Pepperoni', 'BBQ Chicken', 'Four Cheese', 'Veggie Supreme']
 
     def __repr__(self):
-        return f'Restaurant {self.name}, Todays pizza choices for 25 / 30 cm; thin / thick crust: {self.get_menu_item_name()}'
+        return f"Restaurant {self.name}, Today's pizza choices for 25 / 30 cm; thin / thick crust: {self.get_menu_item_name()}"
 
     def add_menu_item(self, pizza: Pizza):
         """Add a menu item to the restaurant's menu"""
-
-        self.menu_pizza_25.append(pizza)
-        self.menu_pizza_30.append(pizza)
-
-
-
+        pass
 
     def get_menu_item_name(self):
         """Return menu item name."""
-        pizza_25 = '25 cm Pizzas: '
-        pizza_30 = '30 cm Pizzas: '
-        for pizza in self.menu_pizza_25:
-            pizza_25 += f'{pizza.name} '
-        for pizza in self.menu_pizza_30:
-            pizza_30 += f'{pizza.name}'
-        return pizza_25 + ' ' + pizza_30
+        pass
 
-
-    def load_default_menu(self):
-        """Add all pizza types (classes) to the menu"""
-        self.menu_pizza_25.append(Margherita(ThinCrust(25)))
-        self.menu_pizza_25.append(Pepperoni(ThinCrust(25)))
-        self.menu_pizza_25.append(BBQChicken(ThinCrust(25)))
-        self.menu_pizza_25.append(FourCheese(ThinCrust(25)))
-        self.menu_pizza_25.append(VeggieSupreme(ThinCrust(25)))
-
-        self.menu_pizza_30.append(Margherita(ThinCrust(30)))
-        self.menu_pizza_30.append(Pepperoni(ThinCrust(30)))
-        self.menu_pizza_30.append(BBQChicken(ThinCrust(30)))
-        self.menu_pizza_30.append(FourCheese(ThinCrust(30)))
-        self.menu_pizza_30.append(VeggieSupreme(ThinCrust(30)))
-
+    def get_menu(self):
+        """Prints out the menu items with their respective toppings."""
+        pass
 
     def place_order(self, order: Order):
         """Add the order to the restaurant's order list"""

@@ -1,26 +1,20 @@
 """General toppings class."""
 class Topping:
     def __init__(self, name, weight):
-        """
-        Initialize a pizza topping object.
-
-        :param name: Name of the topping (not case-sensitive).
-        :param weight: Weight of the topping in grams.
-        """
         self.name = name
         self.weight = weight
         self._set_price()
 
-        if name.lower() not in Topping_calories:
-            raise ValueError(f"Unknown topping: {name}")
-        self.calories = self.weight * Topping_calories[name.lower()]
+        key = name.lower()
+
+        if key not in Topping_calories:
+            raise ValueError(f"Unknown topping: {self.name}")
+        self.calories = self.weight * Topping_calories[key]
 
     def _set_price(self):
-        """Set the price of the topping based on it's weight."""
         self.price = round(0.1 * self.weight, 2)
 
     def __repr__(self):
-        """Return a string representation of the topping."""
         return self.name
 
 """Topping calories dictionary."""
@@ -29,7 +23,7 @@ Topping_calories = {
     "shredded cheese": 3,
     "pepperoni slices": 5,
     "crushed tomatoes": 0.4,
-    "BBQ sauce": 1.2,
+    "bbq sauce": 1.2,
     "cooked chicken breast": 1.65,
     "red onion": 0.4,
     "bell pepper": 0.2,

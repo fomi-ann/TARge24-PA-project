@@ -1,4 +1,4 @@
-import client_db_mgmt
+from program.clientData import client_db_mgmt
 
 
 def check_numbers_in_name(name):
@@ -41,9 +41,7 @@ def create_name():
         if not check_numbers_in_name(name) and name_length_check > 1:
             if name_length_check == 2:
                 name = name.split()
-                print(name)
                 name.insert(1, "")
-                print(name)
             elif name_length_check == 3:
                 name = name.split()
             else:
@@ -100,7 +98,7 @@ def ask_user_id():
 
     while True:
         id = input("Please insert your id: ")
-        db = client_db_mgmt.client_db
+        db = client_db_mgmt.read_db()
         db_check = any(id in x for x in db)
         if db_check:
             return id
@@ -110,7 +108,7 @@ def ask_user_id():
             print("You have entered an invalid id or you're not registered.")
 
 
-def user_operation_check() -> None:
+def user_operation_check():
     """Checks if the user wants to log in, register or continue as a guest."""
     correct_inputs = ["r", "register", "l", "login", "continue", "c"]
     while True:
@@ -120,17 +118,14 @@ def user_operation_check() -> None:
             if user_input in correct_inputs[0:2]:
                 # Client registration
                 new_id = client_db_mgmt.create_client_id()
-                client_db_mgmt.init_client(get_user_data(), new_id)
-                return
+                return client_db_mgmt.init_client(get_user_data(), new_id)
             elif user_input in correct_inputs[2:4]:
                 # Client login
                 # NEED TO SEND CLIENT ID TO CLIENT INIT
                 # CREATE METHOD FOR GETTING CLIENT ID
-                client_db_mgmt.init_client(user_id= ask_user_id())
-                return
+                return client_db_mgmt.init_client(user_id= ask_user_id())
             else:
                 # Guest session
-                client_db_mgmt.init_client(get_user_data())
-                return
+                return client_db_mgmt.init_client(get_user_data())
         else:
             print("You have inserted an invalid operation. Please select a valid one.")

@@ -2,21 +2,11 @@ import random
 import csv
 import json
 import pandas as pd
+import os
 
-from Client import Client
-from program.client_data.guestClient import GuestClient
-from program.client_data.registeredClient import RegisteredClient
-
-client_db = None
-
-
-def database_init_check():
-    """Checks if the client_db is a None type and exits the program if it is.
-    """
-    global client_db
-    if client_db is None:
-        print("Database failed to initialise. Ending program.")
-        exit()
+from program.clientData import Client
+from program.clientData.guestClient import GuestClient
+from program.clientData.registeredClient import RegisteredClient
 
 
 def read_db():
@@ -25,26 +15,27 @@ def read_db():
     Returns nothing.
     Should be used at the start of a program.
     """
-    global client_db
-    with open("registeredClients.csv", "r") as db:
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    db_file_path = os.path.join(current_dir, "registeredClients.csv")
+    with open(db_file_path, "r") as db:
         client_db = list(csv.reader(db, delimiter=":"))
-        # return client_db
+        return client_db
     # with open("registeredClientsTest.csv", "r") as db:
     #     client_db = list(csv.reader(db, delimiter=":"))
 
 
 def save_client_to_db(client: RegisteredClient):
     """Saves client information to database"""
-    with open("registeredClients.csv", "a", newline="") as db:
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    db_file_path = os.path.join(current_dir, "registeredClients.csv")
+    with open(db_file_path, "a", newline="") as db:
         csv_file = csv.writer(db, delimiter=":")
         csv_file.writerow(client.get_client_data())
 
 
 def load_user_data_from_db(user_id):
     """Returns a list of all the saved user data."""
-    global client_db
-    database_init_check()
-
+    client_db = read_db()
     for client_data in client_db:
         if user_id in client_data:
             return client_data
@@ -70,10 +61,10 @@ def init_client(user_data: list = None, user_id=None):
     if user_id is None and user_data is not None:
         # Guest client initiation
         client = GuestClient(*user_data)
-        return
+        return client
     elif user_id is not None and user_data is None:
         # Registered user initiation from database
-        read_db()
+        user_db = read_db()
         client_data = load_user_data_from_db(user_id)
         # Converts strings in client data to lists.
         for x in range(len(client_data)):
@@ -101,7 +92,7 @@ def init_client(user_data: list = None, user_id=None):
         client.set_client_id(user_id)
         client.init_orders(client_data[3], client_data[4])
 
-        return
+        return client
     else:
         # 1. New registered user initiation
         # 2. save to database
@@ -110,7 +101,7 @@ def init_client(user_data: list = None, user_id=None):
         client.set_client_id(user_id)
         print(f"Your new id is: {client.get_client_id()}")
         save_client_to_db(client)
-        return
+        return client
 
 
 def create_client_id() -> str:
@@ -122,13 +113,11 @@ def create_client_id() -> str:
     4. If string is in file, runs the function again
     5. Returns the string if it is not in file
     """
-    global client_db
+    client_db = read_db()
 
     new_id = ""
     for x in range(0, 8):
         new_id += str(random.randint(0, 9))
-
-    database_init_check()
 
     if any(new_id in db for db in client_db):
         new_id = create_client_id()

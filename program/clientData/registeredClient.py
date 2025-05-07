@@ -1,5 +1,5 @@
-from Client import Client
-import client_data
+from program.clientData.Client import *
+from program.clientData.client_data import *
 
 
 class RegisteredClient(Client):
@@ -20,7 +20,7 @@ class RegisteredClient(Client):
         """Sets the current client's id by checking main programs inputs."""
         self.id = user_id
 
-    def init_orders(self, comp_orders:list, pen_orders:list):
+    def init_orders(self, comp_orders: list, pen_orders: list):
         """Initialises orders from database data."""
         self.completed_orders = comp_orders
         self.pending_orders = pen_orders

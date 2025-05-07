@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from program.Pizza import *
-from program.client_data import Client
+from program.clientData import Client
 import uuid
 
 from Restaurant import *
@@ -20,12 +20,13 @@ class Order:
         self.ordered_items = []
 
     def __repr__(self):
-        return f"Order nr: {self.id}, client: {self.client}, total_price: {self.total_price}, total_calories: {self.total_calories}"
+        self.calculate_totals()
+        return f"Order nr: {self.id}, {self.client}, total_price: {self.total_price}€, total_calories: {self.total_calories}"
 
     def add_item(self, pizza: Pizza):
         """Add a pizza item to current order if it's in the restaurant's menu"""
-        pizza_list = self.restaurant.menu_pizza_30
-        pizza_check = any(pizza.name == x.name for x in pizza_list)
+        pizza_list = self.restaurant.menu_items
+        pizza_check = pizza.name in pizza_list
         if pizza_check:
             self.ordered_items.append(pizza)
             print(f"{pizza.name} was added to your order.")
@@ -48,8 +49,9 @@ class Order:
 
     def get_summary(self):
         """Print the summary of the order"""
+        self.calculate_totals()
         summary = f"Order ID: {self.id}\n"
-        summary += f"Client: {self.client.first_name if self.client else 'Unknown'}\n"
+        summary += f"Client: {self.client.get_full_name() if self.client else 'Unknown'}\n"
         summary += "Ordered items:\n"
 
         for pizza in self.ordered_items:
