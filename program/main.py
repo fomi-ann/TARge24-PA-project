@@ -113,8 +113,8 @@ if __name__ == '__main__':
         pizzaThick25 = add_pizza_class_to_order(item, 'thick', 25)
         pizzaThick30 = add_pizza_class_to_order(item, 'thick', 30)
         print(f"{idx}. {item}")
-        print(f"Thin 25cm price: {pizzaThin25.price}€ -- Thick 25cm price: {pizzaThick25.price}€")
-        print(f"Thin 30cm price: {pizzaThin30.price}€ -- Thick 30cm price: {pizzaThick30.price}€")
+        print(f"Thin 25cm price: {pizzaThin25.price}€ - Calories: {pizzaThin25.calories} --- Thick 25cm price: {pizzaThick25.price}€ - Calories: {pizzaThick25.calories}")
+        print(f"Thin 30cm price: {pizzaThin30.price}€ - Calories: {pizzaThin30.calories} --- Thick 30cm price: {pizzaThick30.price}€ - Calories: {pizzaThick30.calories}")
         print("-----------")
 
     while True:

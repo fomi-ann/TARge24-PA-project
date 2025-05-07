@@ -51,7 +51,7 @@ class Order:
         """Print the summary of the order"""
         self.calculate_totals()
         summary = f"Order ID: {self.id}\n"
-        summary += f"Client: {self.client.first_name if self.client else 'Unknown'}\n"
+        summary += f"Client: {self.client.get_full_name() if self.client else 'Unknown'}\n"
         summary += "Ordered items:\n"
 
         for pizza in self.ordered_items:
