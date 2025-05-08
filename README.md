@@ -28,4 +28,9 @@ Python 3.12 ja pandas package
 3. Programm küsib kas kasutaja tahab peenikese või paksu põhjaga pitsat. thick ja thin(case insensitive) on aktsepteeritavad inputtid
 4. Programm küsib mis suurust kasutaja tahab ja aktsepteeritavad inputtid on 25 ja 30
 5. Programm küsib kas kasutaja tahab veel midagi lisada, aktsepteeritavad inputtid on y, yes, n ja no
-6. Programm laeb summary olemasolevatest toodetest lõpetuseks
+6. Programm küsib kas kasutaja tahab orderit kinnitada. Aktsepteeritavad inputtid on y ja n.
+- kui on valitud n:
+  -küsib kas kasutaja tahab lisada, muuta või kustutada orderit. inputtid on add/change/delete
+  -change valimisel laeb praeguse orderi pitsad ja küsib järjenumbrit kustutamiseks
+  -delete valimisel ütleb programm et order on kustutatud ja lõpetab programmi
+- kui on valitud y siis programm prindib välja orderi summary juhul kui order ei ole tühi ning lõpetab programmi
