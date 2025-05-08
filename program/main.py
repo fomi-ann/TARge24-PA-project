@@ -1,4 +1,3 @@
-
 from program.clientData.client_data import *
 from Order import *
 from Pizza import *
@@ -87,6 +86,7 @@ def ask_user_for_pizza_size():
         else:
             print("Please enter a valid input.")
 
+
 def ask_user_for_pizza_param(restaurant):
     """
     Creates 3 variables which the method sends to
@@ -95,25 +95,31 @@ def ask_user_for_pizza_param(restaurant):
     name = ask_user_for_pizza_name(restaurant)
     crust = ask_user_for_crust()
     size = ask_user_for_pizza_size()
-    order.add_item(add_pizza_class_to_order(name,crust,size))
+    order.add_item(add_pizza_class_to_order(name, crust, size))
+
 
 def confirm_order():
-    option = input("Confirm order? (y/n): ").lower()
-    if option == 'y':
-        print("")
-        print(f"Order nr: {order.id} confirmed! Thank you for your order.")
-        print("")
-        order.get_summary()
-    if option == 'n':
-        change_order()
+    while True:
+        option = input("Confirm order? (y/n): ").lower()
+        if option == 'y':
+            if len(order.ordered_items) > 0:
+                print("")
+                print(f"Order nr: {order.id} confirmed! Thank you for your order.")
+                print("")
+                order.get_summary()
+                return
+            else:
+                print("Your empty order has been cancelled.")
+                return
+        if option == 'n':
+            value = change_order()
+            if value:
+                print("Your order has been cancelled. Please visit us again!")
+                return
 
 
 def change_order():
-    if not order.ordered_items:
-        print("Your order is empty.")
-        return
-
-    option = input("Would you like to change/delete your order? (change/delete): ").lower()
+    option = input("Would you like to add another pizza or change/delete your order? (add/change/delete): ").lower()
     if option == 'change':
         print("\nYour current ordered items are:")
         for idx, pizza in enumerate(order.ordered_items, start=1):
@@ -125,6 +131,13 @@ def change_order():
 
         except ValueError:
             print("Please enter a valid number.")
+    elif option == 'add':
+        ask_user_for_pizza_param(restaurant)
+    elif option == 'delete':
+        order.ordered_items = []
+        return True
+    return None
+
 
 if __name__ == '__main__':
     restaurant = Restaurant("Pizza place")
@@ -140,12 +153,14 @@ if __name__ == '__main__':
         pizzaThick25 = add_pizza_class_to_order(item, 'thick', 25)
         pizzaThick30 = add_pizza_class_to_order(item, 'thick', 30)
         print(f"{idx}. {item}")
-        print(f"Thin 25cm price: {pizzaThin25.price}€ - Calories: {pizzaThin25.calories} --- Thick 25cm price: {pizzaThick25.price}€ - Calories: {pizzaThick25.calories}")
-        print(f"Thin 30cm price: {pizzaThin30.price}€ - Calories: {pizzaThin30.calories} --- Thick 30cm price: {pizzaThick30.price}€ - Calories: {pizzaThick30.calories}")
+        print(
+            f"Thin 25cm price: {pizzaThin25.price}€ - Calories: {pizzaThin25.calories} --- Thick 25cm price: {pizzaThick25.price}€ - Calories: {pizzaThick25.calories}")
+        print(
+            f"Thin 30cm price: {pizzaThin30.price}€ - Calories: {pizzaThin30.calories} --- Thick 30cm price: {pizzaThick30.price}€ - Calories: {pizzaThick30.calories}")
         print("-----------")
 
     while True:
-        ask_user_for_pizza_param(restaurant)#pitsa sisestamine orderisse
+        ask_user_for_pizza_param(restaurant)  # pitsa sisestamine orderisse
         correct_inputs = ['yes', 'y', 'no', 'n']
         continue_check = input("Do you want to buy another pizza?(y/n): ").lower()
         if user_input_control(continue_check, correct_inputs):
@@ -154,5 +169,3 @@ if __name__ == '__main__':
             else:
                 confirm_order()
                 break
-
-
