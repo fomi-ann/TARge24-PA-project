@@ -1,4 +1,3 @@
-from numpy.ma.core import append
 
 from program.clientData.client_data import *
 from Order import *
@@ -98,6 +97,34 @@ def ask_user_for_pizza_param(restaurant):
     size = ask_user_for_pizza_size()
     order.add_item(add_pizza_class_to_order(name,crust,size))
 
+def confirm_order():
+    option = input("Confirm order? (y/n): ").lower()
+    if option == 'y':
+        print("")
+        print(f"Order nr: {order.id} confirmed! Thank you for your order.")
+        print("")
+        order.get_summary()
+    if option == 'n':
+        change_order()
+
+
+def change_order():
+    if not order.ordered_items:
+        print("Your order is empty.")
+        return
+
+    option = input("Would you like to change/delete your order? (change/delete): ").lower()
+    if option == 'change':
+        print("\nYour current ordered items are:")
+        for idx, pizza in enumerate(order.ordered_items, start=1):
+            print(f"{idx}. {pizza.name}")
+
+        try:
+            choice = int(input("\nEnter the number of the pizza you want to delete: "))
+            order.remove_item_by_index(choice - 1)
+
+        except ValueError:
+            print("Please enter a valid number.")
 
 if __name__ == '__main__':
     restaurant = Restaurant("Pizza place")
@@ -125,7 +152,7 @@ if __name__ == '__main__':
             if continue_check in correct_inputs[0:2]:
                 pass
             else:
+                confirm_order()
                 break
 
-    print("")
-    order.get_summary()
+

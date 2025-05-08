@@ -33,7 +33,7 @@ class Order:
         else:
             print(f"{pizza.name} is not in the restaurant's menu. Please choose something else.")
 
-    def remove_item(self, pizza):
+    def remove_pizza(self, pizza):
         """Remove a specific pizza instance from the order."""
         if pizza in self.ordered_items:
             self.ordered_items.remove(pizza)
@@ -41,6 +41,15 @@ class Order:
         else:
             print(f"{pizza.name} not found in this order.")
 
+##
+    def remove_item_by_index(self, index):
+        """Remove a pizza from the order by index."""
+        try:
+            removed = self.ordered_items.pop(index)
+            print(f"{removed.name} was removed from your order.")
+        except IndexError:
+            print("Invalid item number.")
+##
 
     def calculate_totals(self):
         """Calculate the total cost and calories of all items in the order"""
@@ -55,10 +64,14 @@ class Order:
         summary += "Ordered items:\n"
 
         for pizza in self.ordered_items:
-            summary += f" - {pizza.name} ({pizza.dough}cm): {pizza.price} EUR\n"
+            summary += f" - {pizza.name} ({pizza.dough}): {pizza.price} EUR\n"
 
         summary += f"Total Price: {self.total_price} EUR\n"
         summary += f"Total Calories: {self.total_calories} kcal"
+        print(summary)
+
+    def clear_summary(self):
+        summary = f"Order ID: {self.id} has been deleted"
         print(summary)
 
 
