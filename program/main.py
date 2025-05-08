@@ -136,7 +136,8 @@ def change_order():
     elif option == 'delete':
         order.ordered_items = []
         return True
-    return None
+    else:
+        print("Invalid input.")
 
 
 if __name__ == '__main__':
