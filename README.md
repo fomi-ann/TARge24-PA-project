@@ -30,7 +30,7 @@ Python 3.12 ja pandas package
 5. Programm küsib kas kasutaja tahab veel midagi lisada, aktsepteeritavad inputtid on y, yes, n ja no
 6. Programm küsib kas kasutaja tahab orderit kinnitada. Aktsepteeritavad inputtid on y ja n.
 - kui on valitud n:
-  -küsib kas kasutaja tahab lisada, muuta või kustutada orderit. inputtid on add/change/delete
-  -change valimisel laeb praeguse orderi pitsad ja küsib järjenumbrit kustutamiseks
-  -delete valimisel ütleb programm et order on kustutatud ja lõpetab programmi
+  küsib kas kasutaja tahab lisada, muuta või kustutada orderit. inputtid on add/change/delete
+  change valimisel laeb praeguse orderi pitsad ja küsib järjenumbrit kustutamiseks
+  delete valimisel ütleb programm et order on kustutatud ja lõpetab programmi
 - kui on valitud y siis programm prindib välja orderi summary juhul kui order ei ole tühi ning lõpetab programmi
