@@ -27,14 +27,20 @@ Python 3.12 ja pandas package
 2. Programm laeb ette menüü ning kasutaja peab sisestama pitsa järjenumbri, et seda valida
 3. Programm küsib kas kasutaja tahab peenikese või paksu põhjaga pitsat. thick ja thin(case insensitive) on aktsepteeritavad inputtid
 4. Programm küsib mis suurust kasutaja tahab ja aktsepteeritavad inputtid on 25 ja 30
-5. Programm küsib kas kasutaja tahab veel midagi lisada, aktsepteeritavad inputtid on y, yes, n ja no
-6. Programm küsib kas kasutaja tahab orderit kinnitada. Aktsepteeritavad inputtid on y ja n.
-**Kui on valitud "**n**":**
+5. Programm küsib kas kasutaja tahab veel midagi lisada, aktsepteeritavad inputtid on 'y', 'yes', 'n' ja 'no'
+6. Programm küsib, kas kasutaja tahab tellimust kinnitada. Aktsepteeritavad sisendid on `y` ja `n`.
 
-* Programm küsib, kas kasutaja soovib tellimust **lisada**, **muuta** või **kustutada**.
-    * Lubatud sisendid on: `add`, `change`, `delete`.
-* **"change"** valiku korral:
-    * Programm laeb praeguse tellimuse pitsad.
-    * Seejärel küsib programm **järjenumbrit**, mida kasutaja soovib muuta või kustutada.
-* **"delete"** valiku korral:
-    * Programm kuvab teate: "**Tellimus on kustutatud**" ja lõpetab töö.
+    **Kui on valitud "**n**":**
+
+    * Programm küsib, kas kasutaja soovib tellimust **lisada**, **muuta** või **kustutada**.
+        * Lubatud sisendid on: `add`, `change`, `delete`.
+    * **"change"** valiku korral:
+        * Programm laeb praeguse tellimuse pitsad.
+        * Seejärel küsib programm **järjenumbrit**, mida kasutaja soovib muuta või kustutada.
+    * **"delete"** valiku korral:
+        * Programm kuvab teate: "**Tellimus on kustutatud**" ja lõpetab töö.
+
+    **Kui on valitud "**y**":**
+
+    * Programm prindib välja tellimuse **kokkuvõtte** (summary) **juhul, kui tellimus ei ole tühi**.
+    * Seejärel programm lõpetab töö.
