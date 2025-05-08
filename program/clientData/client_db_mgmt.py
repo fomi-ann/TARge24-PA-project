@@ -77,7 +77,7 @@ def init_client(user_data: list = None, user_id=None):
 
         # Checks if the user has a middle name
         split_name = client_data[1].split()
-        print(split_name)
+
         if len(split_name) > 2:
             first_name = split_name[0]
             middle_name = split_name[1]
