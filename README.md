@@ -44,3 +44,5 @@ Python 3.12 ja pandas package
 
     * Programm prindib välja tellimuse **kokkuvõtte** (summary) **juhul, kui tellimus ei ole tühi**.
     * Seejärel programm lõpetab töö.
+
+    Esitlus: https://docs.google.com/presentation/d/1n3Q3GGC-XFYKBAhCgYtrlMifNGFS6xI-/edit?usp=sharing&ouid=115683845845379103296&rtpof=true&sd=true
